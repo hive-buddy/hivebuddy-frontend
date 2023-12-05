@@ -1,0 +1,8 @@
+POST http://localhost:8080/send HTTP/1.1
+content-type: application/json
+
+# hi how i up2
+{
+    "textMessage": "sample",
+    "hive_id": 1
+}

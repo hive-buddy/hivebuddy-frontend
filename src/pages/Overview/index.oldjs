@@ -1,0 +1,48 @@
+import React, { useState } from 'react';
+import SockJsClient from 'react-stomp';
+
+const SOCKET_URL = 'http://localhost:8080/ws-message';
+
+const Overview = () => {
+
+    const sensorTypeIds = [1, 2, 3, 4, 5];
+    const valuesArray = [];
+    sensorTypeIds.forEach((sensorId) => {
+        valuesArray.push([sensorId, 0])
+    });
+
+    const [values, setValues] = useState(valuesArray);
+
+    let onConnected = () => {
+        console.log("Connected!!")
+    }
+
+    let onValuesReceived = (data) => {
+        setValues(data)
+    }
+
+    return (
+        <div>
+            <SockJsClient
+                url={SOCKET_URL}
+                topics={['/overview/1']}
+                onConnect={onConnected}
+                onDisconnect={console.log("Disconnected!")}
+                onMessage={data => onValuesReceived(data)}
+                debug={false}
+            />
+            <div>
+                <ul>
+                    {values.map((value) => (
+                        <li>
+
+                            {value.val}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    );
+}
+
+export default Overview;

@@ -1,45 +1,44 @@
 import React from 'react'
 import itemData from './const/imageList'
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
-import {Container, Typography, Box} from "@mui/material";
+import {Container, Typography, Grid, Card, CardMedia, CardContent, ThemeProvider} from "@mui/material";
 import {PageStyles} from "../consts/pageStyles";
+import {theme} from '../consts/themes'
+
+const SOCKET_URL = 'http://localhost:8080/ws-message';
 
 
 const Team = () => {
     return (
-        <Container sx={PageStyles.containerImages}>
-            <Box sx={PageStyles.typographyTitles}>
-                <Typography variant="h4" >Our team</Typography>
-            </Box>
-            <ImageList sx={PageStyles.imageList} variant="woven" cols={3} gap={8}>
-                {itemData.map((item) => (
-                    <ImageListItem key={item.img}>
-                        <img
-                            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                            src={`${item.img}?w=248&fit=crop&auto=format`}
-                            alt={item.title}
-                            loading="lazy"
-                        />
-                        <ImageListItemBar
-                            title={item.title}
-                            subtitle={item.author}
-                            actionIcon={
-                                <IconButton
-                                    sx={{color: 'rgba(255, 255, 255, 0.54)'}}
-                                    aria-label={`info about ${item.title}`}
-                                >
-                                    <InfoIcon/>
-                                </IconButton>
-                            }
-                        />
-                    </ImageListItem>
-                ))}
-            </ImageList>
-        </Container>
+        <ThemeProvider theme={theme}>
+            <Container sx={PageStyles.containerImage}>
+                <Typography variant="h4" align="center" gutterBottom
+                            sx={{...PageStyles.typographyTitlesHighlight, fontFamily: 'Ubuntu'}}>
+                    Our team
+                </Typography>
+                <Grid container spacing={3} justifyContent="center">
+                    {itemData.map((item) => (
+                        <Grid item key={item.img}>
+                            <Card sx={{maxWidth: 300}}>
+                                <CardMedia
+                                    component="img"
+                                    image={`${item.img}?fit=crop&w=300&max-h=300`}
+                                    alt={item.title}
+                                    loading="lazy"
+                                />
+                                <CardContent>
+                                    <Typography variant="h6" component="div">
+                                        {item.title}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {item.author}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+        </ThemeProvider>
     )
 }
 export default Team

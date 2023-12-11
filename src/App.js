@@ -5,19 +5,21 @@ import Overview from './pages/Overview';
 import Process from "./pages/Process/Process";
 import Strengths from "./pages/Strengths/Strengths";
 import Team from "./pages/Team/Team";
+import HiveBuddyDesc from "./pages/HiveBuddy/HiveBuddyDesc";
 
 function App() {
     return (
         <div className="App">
             <Navbar/>
             {/*${router.pathname === "/data"?*/}
-            {/*<HiveBuddy/>*/}
+            <HiveBuddy/>
+            <HiveBuddyDesc/>
             {/*:*/}
             {/*<HiveBuddy/>*/}
-            {/*<Team/>*/}
+            <Team/>
             {/*<Strengths/>*/}
             {/*}*/}
-            {/* <Process/> */}
+            {/* <Process/>*/}
             <Overview/>
         </div>
     );

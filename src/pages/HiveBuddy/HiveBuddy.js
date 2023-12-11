@@ -1,20 +1,30 @@
-import React from 'react'
-import {Box, Container, Typography} from "@mui/material";
+import {useEffect, useState} from 'react'
+import {Box, Container, Grow, Typography} from "@mui/material";
 import {PageStyles} from "../consts/pageStyles";
 
+const SOCKET_URL = 'http://localhost:8080/ws-message';
+
+
 const HiveBuddy = () => {
+    const [checked, setChecked] = useState(false);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setChecked(true);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <Box sx={PageStyles.boxHiveBuddy}>
             <Box sx={PageStyles.titleBox}>
-                <Typography sx={PageStyles.typographyTitles} variant='h5'>What is Hive buddy?</Typography>
+                <Grow in={checked}>
+                    <Typography sx={PageStyles.typographyTitles} variant='h5'>What is HiveBuddy?
+                    </Typography>
+                </Grow>
             </Box>
-            <Container sx={PageStyles.container}>
-                HiveBuddy is a project that focused on optimizing bee keepers work by
-                collecting and processing data like temperature, humidity and noise level.
-                Enhanced with Arduino sensors that allows beekeepers
-                to get real-time report about their hives condition.
-            </Container>
         </Box>
     )
 }
+
 export default HiveBuddy

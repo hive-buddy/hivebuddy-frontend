@@ -1,51 +1,67 @@
-import React from 'react'
-
 export const PageStyles = {
-    box: {
-        height: '700px',
-        backgroundColor: '#F4D03F',
-    },
+    // HiveBuddy page
     boxHiveBuddy: {
-        height: '700px',
+        height: '100vh',
         backgroundImage: `url("https://images.pexels.com/photos/63641/bee-in-the-approach-bee-apis-pollen-63641.jpeg")`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
     },
     typographyTitles: {
-        color: 'red',
-        //backgroundColor: '#c4a20d',
-        width: '250px',
-        padding: '10px',
-        borderRadius: '10px',
+        fontSize: '3.5rem',
+        fontWeight: 'bold',
+        margin: '16px 0',
+        '@media (max-width: 600px)': {
+            fontSize: '2rem', // Adjust font size for smaller screens
+        },
+        color: '#ffffff',
+        textAlign: 'center',
+        //fontFamily: 'Ubuntu'
+    },
+    // Team Page
+    container: {
+        color: '#030000',
+        fontSize: '1.5rem',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
-        // display: 'flex',
-        // alignItems: 'center',
-        // justifyContent: 'center',
+    },
+
+    containerImage: {
+        color: '#030000',
+        fontSize: '1.5rem',
+        height: '100vh',
+
+    },
+    // General
+    typographyTitlesHighlight: {
+        fontSize: '3rem',
+        fontWeight: 'bold',
+        margin: '16px 0',
+        '@media (max-width: 600px)': {
+            fontSize: '2rem', // Adjust font size for smaller screens
+        },
+        color: '#D4AC0D',
+        textAlign: 'center',
+
     },
     titleBox: {
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    container: {
-        color: '#030000',
-        fontSize: '20px',
-        mt: '50px',
-        backgroundColor: 'white',
-        opacity: '0.6',
+        height: '100vh',
+        background: 'rgba(0, 0, 0, 0.5)',
+
     },
     imageList: {
-        width: 700,
-        height: 400,
-    },
-    containerImages: {
-        //ml: '250px',
-        display: 'flex',
-        mt: '5em',
+        width: '150vh',
+        height: '95vh',
         justifyContent: 'center',
-        alignContent: 'center',
-    }
+        alignItems: 'canter',
+        minHeight: '100vh',
+        margin: '0 auto',
+    },
 }
+
 

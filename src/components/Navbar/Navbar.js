@@ -1,24 +1,18 @@
 import React, {useState} from 'react'
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import {mainNavBarItems} from "./consts/navBarItems";
 import {navBarStyles} from "./Styles"
 import {useNavigate} from "react-router-dom";
 import {Tabs, Tab, Typography} from '@mui/material';
 import {Link, animateScroll as scroll} from "react-scroll";
-import {AppBar, Box, Button, Divider,} from "@mui/material";
-import {Image} from "@mui/icons-material";
+import {AppBar, Box} from "@mui/material";
 
 const Navbar = () => {
     const navigate = useNavigate()
     const [value, setValue] = useState(0);
     return (
         <Box sx={navBarStyles.box}>
-            <AppBar position="static" sx={navBarStyles.appBar}>
+            <AppBar position="fixed" sx={navBarStyles.appBar}>
                 <Toolbar>
                     <Box
                         component="img"
@@ -36,10 +30,10 @@ const Navbar = () => {
                     <Tabs
                         TabIndicatorProps={{sx: {backgroundColor: "#000000"}}}
                         value={value} onChange={(e, val) => setValue(val)}
-                        sx={navBarStyles.tabs}
+                        sx={navBarStyles.tabCentering}
                     >
                         {mainNavBarItems.map((item, index) => (
-                            <Tab key={index} label={item.label}></Tab>
+                            <Tab key={index} label={item.label} sx={navBarStyles.tabs}></Tab>
                         ))}
                     </Tabs>
                 </Toolbar>

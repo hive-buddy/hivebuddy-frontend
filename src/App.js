@@ -2,10 +2,9 @@ import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import HiveBuddy from "./pages/HiveBuddy/HiveBuddy";
 import Overview from './pages/Overview';
-import Process from "./pages/Process/Process";
-import Strengths from "./pages/Strengths/Strengths";
 import Team from "./pages/Team/Team";
 import HiveBuddyDesc from "./pages/HiveBuddy/HiveBuddyDesc";
+import Login from "./pages/Login/Login";
 
 function App() {
     return (
@@ -16,11 +15,13 @@ function App() {
             <HiveBuddyDesc/>
             {/*:*/}
             {/*<HiveBuddy/>*/}
-            <Team/>
+            {/*<Team/>*/}
             {/*<Strengths/>*/}
             {/*}*/}
-            {/* <Process/>*/}
+             {/* <Process/>*/}
             <Overview/>
+            <Login/>
+
         </div>
     );
 }

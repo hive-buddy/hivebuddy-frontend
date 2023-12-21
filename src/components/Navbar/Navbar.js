@@ -1,15 +1,35 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Toolbar from '@mui/material/Toolbar';
-import {mainNavBarItems} from "./consts/navBarItems";
-import {navBarStyles} from "./Styles"
-import {useNavigate} from "react-router-dom";
-import {Tabs, Tab, Typography} from '@mui/material';
-import {Link, animateScroll as scroll} from "react-scroll";
-import {AppBar, Box} from "@mui/material";
+import { mainNavBarItems } from "./consts/navBarItems";
+import { navBarStyles } from "./Styles"
+// import {useNavigate} from "react-router-dom";
+import {
+    // BrowserRouter as Router,
+    MemoryRouter,
+    Switch,
+    Route,
+    Routes,
+    Link,
+    useLocation,
+    matchPath,
+    useHistory,
+    useNavigate
+} from "react-router-dom";
+import { StaticRouter } from 'react-router-dom/server';
+import PropTypes from 'prop-types';
+import { Tabs, Tab, Typography } from '@mui/material';
+// import { Link, animateScroll as scroll } from "react-scroll";
+import { AppBar, Box } from "@mui/material";
 
 const Navbar = () => {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [value, setValue] = useState(0);
+    const navigate = useNavigate();
+    const handleRoute = (route) => {
+        // console.log(route);
+        navigate(route); // New line
+      };
+
     return (
         <Box sx={navBarStyles.box}>
             <AppBar position="fixed" sx={navBarStyles.appBar}>
@@ -28,17 +48,20 @@ const Navbar = () => {
                     <Typography sx={navBarStyles.logoText}>HiveBuddy</Typography>
 
                     <Tabs
-                        TabIndicatorProps={{sx: {backgroundColor: "#000000"}}}
+                        TabIndicatorProps={{ sx: { backgroundColor: "#000000" } }}
                         value={value} onChange={(e, val) => setValue(val)}
                         sx={navBarStyles.tabCentering}
                     >
                         {mainNavBarItems.map((item, index) => (
-                            <Tab key={index} label={item.label} sx={navBarStyles.tabs}></Tab>
+                            <Tab key={index} label={item.label} sx={navBarStyles.tabs} onClick={() => { handleRoute(item.route)}}></Tab>
                         ))}
+                        {/* <Tab key="4" label="Test" sx={navBarStyles.tabs} onClick={() => { handleRoute("test")}}></Tab> */}
+                        {/* <LinkTab label="Page One" href="/drafts" /> */}
                     </Tabs>
                 </Toolbar>
             </AppBar>
         </Box>
     )
 }
+
 export default Navbar

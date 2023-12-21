@@ -33,7 +33,8 @@ const SensorButton = (props) => {
         <Tooltip title={calculateSeconds(props.sensor.timestamp)} disableInteractive>
             <Button style={{ display: "block", textAlign: "middle" }}>
                 <Typography variant="h6">Temperature</Typography>
-                <Typography variant="body1">{props.sensor.value}</Typography>
+                {/* <Typography variant="body1">{props.sensor.value}</Typography> */}
+                <Typography variant="body1">{props.sensor.timestamp}</Typography>
             </Button>
         </Tooltip>
     );

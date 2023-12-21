@@ -48,8 +48,9 @@ const Navbar = () => {
                     <Typography sx={navBarStyles.logoText}>HiveBuddy</Typography>
 
                     <Tabs
-                        TabIndicatorProps={{ sx: { backgroundColor: "#000000" } }}
-                        value={value} onChange={(e, val) => setValue(val)}
+                        TabIndicatorProps={{sx: {backgroundColor: "#000000"}}}
+                        value={value}
+                        onChange={(e, val) => setValue(val)}
                         sx={navBarStyles.tabCentering}
                     >
                         {mainNavBarItems.map((item, index) => (

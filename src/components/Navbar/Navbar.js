@@ -29,7 +29,8 @@ const Navbar = () => {
 
                     <Tabs
                         TabIndicatorProps={{sx: {backgroundColor: "#000000"}}}
-                        value={value} onChange={(e, val) => setValue(val)}
+                        value={value}
+                        onChange={(e, val) => setValue(val)}
                         sx={navBarStyles.tabCentering}
                     >
                         {mainNavBarItems.map((item, index) => (

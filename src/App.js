@@ -5,6 +5,7 @@ import Overview from './pages/Overview';
 import Team from "./pages/Team/Team";
 import HiveBuddyDesc from "./pages/HiveBuddy/HiveBuddyDesc";
 import Login from "./pages/Login/Login";
+import Strengths from "./pages/Strengths/Strengths";
 
 function App() {
     return (
@@ -15,10 +16,10 @@ function App() {
             <HiveBuddyDesc/>
             {/*:*/}
             {/*<HiveBuddy/>*/}
-            {/*<Team/>*/}
+            <Team/>
             {/*<Strengths/>*/}
             {/*}*/}
-             {/* <Process/>*/}
+            {/* <Process/>*/}
             <Overview/>
             <Login/>
 

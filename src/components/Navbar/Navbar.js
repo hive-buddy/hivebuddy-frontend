@@ -86,5 +86,4 @@ function Navbar(props) {
         </React.Fragment>
     )
 }
-
 export default Navbar

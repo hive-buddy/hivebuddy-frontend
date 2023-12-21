@@ -6,10 +6,14 @@ import Overview from './pages/Overview';
 import Team from "./pages/Team/Team";
 import HiveBuddyDesc from "./pages/HiveBuddy/HiveBuddyDesc";
 import Login from "./pages/Login/Login";
-import Strengths from "./pages/Strengths/Strengths";
+import {useState} from "react";
 
 
 function App() {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => {
+        setIsOpen(!isOpen)
+    }
     return (
         <Routes>
             <Route path='/' element={

@@ -7,6 +7,7 @@ import Team from "./pages/Team/Team";
 import HiveBuddyDesc from "./pages/HiveBuddy/HiveBuddyDesc";
 import Login from "./pages/Login/Login";
 import {useState} from "react";
+import HiveId from "./pages/Login/HiveId";
 
 
 function App() {
@@ -21,13 +22,14 @@ function App() {
                     <Navbar />
                     <HiveBuddy />
                     <HiveBuddyDesc />
-                    <Team />
+                    {/*<Team />*/}
                     {/* <Strengths /> */}
                     {/* <Process /> */}
                     <Login />
                 </>
             } />
             <Route path='/enter' element={<Overview />} />
+            <Route path='/HiveId' element={<HiveId />} />
             <Route path='login' element={<h1>Login Page Component</h1>} />
         </Routes>
     );

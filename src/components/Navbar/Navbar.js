@@ -1,29 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import { mainNavBarItems } from "./consts/navBarItems";
-import { navBarStyles } from "./Styles"
-// import {useNavigate} from "react-router-dom";
+import { navBarStyles } from "./Styles";
 import {
-    // BrowserRouter as Router,
-    MemoryRouter,
-    Switch,
-    Route,
-    Routes,
-    Link,
-    useLocation,
-    matchPath,
-    useHistory,
     useNavigate
 } from "react-router-dom";
-import { StaticRouter } from 'react-router-dom/server';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Typography } from '@mui/material';
-// import { Link, animateScroll as scroll } from "react-scroll";
 import { AppBar, Box } from "@mui/material";
 import Slide from '@mui/material/Slide';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
 
 function HideOnScroll(props) {
     const { children, window } = props;
@@ -52,7 +39,6 @@ HideOnScroll.propTypes = {
 
 
 function Navbar(props) {
-    // const navigate = useNavigate()
     const [value, setValue] = useState(0);
     const navigate = useNavigate();
     const handleRoute = (route) => {

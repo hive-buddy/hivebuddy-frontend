@@ -6,7 +6,6 @@ import Overview from './pages/Overview';
 import Team from "./pages/Team/Team";
 import HiveBuddyDesc from "./pages/HiveBuddy/HiveBuddyDesc";
 import Login from "./pages/Login/Login";
-import {Route, Routes} from "react-router-dom"
 import {useState} from "react";
 
 

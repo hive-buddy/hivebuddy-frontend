@@ -1,7 +1,7 @@
 export const navBarStyles = {
     appBar: {
         fontFamily: 'monospace',
-        backgroundColor: 'rgba(241,196,0,0.4)',
+        backgroundColor: 'rgba(241,196,0,1)',
         height: '80px',
         '@media (max-width: 600px)': {
             height: '60px',

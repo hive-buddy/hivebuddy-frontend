@@ -1,4 +1,5 @@
 import './App.css';
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HiveBuddy from "./pages/HiveBuddy/HiveBuddy";
 import Overview from './pages/Overview';
@@ -15,14 +16,21 @@ function App() {
         setIsOpen(!isOpen)
     }
     return (
-        <div className="App">
-            <Navbar toggle={toggle}/>
-            <HiveBuddy/>
-            <HiveBuddyDesc/>
-            <Login/>
-            <Overview/>
-
-        </div>
+        <Routes>
+            <Route path='/' element={
+                <>
+                    <Navbar />
+                    <HiveBuddy />
+                    <HiveBuddyDesc />
+                    <Team />
+                    {/* <Strengths /> */}
+                    {/* <Process /> */}
+                    <Login />
+                </>
+            } />
+            <Route path='/enter' element={<Overview />} />
+            <Route path='login' element={<h1>Login Page Component</h1>} />
+        </Routes>
     );
 }
 

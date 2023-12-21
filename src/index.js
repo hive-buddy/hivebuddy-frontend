@@ -9,27 +9,31 @@ import '@fontsource/roboto/700.css';
 import {
     createBrowserRouter,
     RouterProvider,
+    BrowserRouter
 } from "react-router-dom";
 import Team from './pages/Team/Team';
 import HiveBuddy from './pages/HiveBuddy/HiveBuddy';
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App/>,
-    },
-    {
-        path: "/our-team",
-        element: <Team />
-    },
-    {
-        path: "/what-is-hiveBuddy",
-        element: <HiveBuddy />
-    },
-]);
+// const router = createBrowserRouter([
+//     {
+//         path: "/",
+//         element: <App />,
+//     },
+//     {
+//         path: "/our-team",
+//         element: <Team />
+//     },
+//     {
+//         path: "/what-is-hiveBuddy",
+//         element: <HiveBuddy />
+//     },
+// ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        {/* <RouterProvider router={router} /> */}
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </React.StrictMode>
 );

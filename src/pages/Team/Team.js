@@ -24,6 +24,7 @@ const Team = () => {
                                     image={`${item.img}?fit=crop&w=300&max-h=300`}
                                     alt={item.title}
                                     loading="lazy"
+                                    sx={{ height: 300 }}
                                 />
                                 <CardContent>
                                     <Typography variant="h6" component="div">

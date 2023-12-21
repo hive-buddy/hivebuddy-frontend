@@ -10,35 +10,6 @@ import {TabContext, TabList, TabPanel} from "@mui/lab";
 
 const Navbar = () => {
     return (
-        // <AppBar position="static" sx={navBarStyles.appBar}>
-        //     <Container>
-        //         <Toolbar>
-        //             <div style={navBarStyles.logo}>
-        //                 <img style={{
-        //                     height: 50,
-        //                     width: 50,
-        //                 }}
-        //                      src="https://cdn-icons-png.flaticon.com/512/5737/5737723.png"
-        //                      alt="Logo" />
-        //                 <Typography variant="h6" sx={navBarStyles.logoText}>HiveBuddy</Typography>
-        //             </div>
-        //             <nav>
-        //                 <Link href="./../../pages/HiveBuddy/HiveBuddyDesc.js" sx={navBarStyles.navLink}>
-        //                     HiveBuddy
-        //                 </Link>
-        //                 <Link href="page2" sx={navBarStyles.navLink}>
-        //                     Page 2
-        //                 </Link>
-        //                 <Link href="page3" sx={navBarStyles.navLink}>
-        //                     Page 3
-        //                 </Link>
-        //                 <Link href="page4" sx={navBarStyles.navLink}>
-        //                 </Link>
-        //             </nav>
-        //         </Toolbar>
-        //     </Container>
-        // </AppBar>
-    // Page 4
         <Box sx={navBarStyles.box}>
             <AppBar position="fixed" sx={navBarStyles.appBar}>
                 <Toolbar>

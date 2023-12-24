@@ -1,6 +1,6 @@
 export const itemData = [
     {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/ArduinoLogo_%C2%AE.svg/2560px-ArduinoLogo_%C2%AE.svg.png',
         title: 'Arduino Master',
         author: '@Sofia Hmyria',
     },

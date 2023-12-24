@@ -18,33 +18,59 @@ export const PageStyles = {
         textAlign: 'center',
         //fontFamily: 'Ubuntu'
     },
+    descContainer:{
+        color: '#c76c13',
+        background: 'rgb(243,224,157)',
+        padding:'0 5em 0 5em;',
+        fontSize: '1.4rem',
+        height: '60vh',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignContent: 'center',
+        justifyContent: 'center',
+        '@media (min-width: 1200px)': {
+            maxWidth: 'initial',
+        },
+        '@media (min-width: 600px)': {
+            padding: '0 5em 0 5em;'
+        }
+    },
+
     // Team Page
     container: {
         color: '#030000',
         fontSize: '1.5rem',
-        height: '100vh',
+        // height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        '@media (min-width: 1200px)': {
+            maxWidth: 'initial',
+        },
     },
 
     containerImage: {
         color: '#030000',
         fontSize: '1.5rem',
         height: '100vh',
-
+        '@media (min-width: 1200px)': {
+            maxWidth: 'initial',
+        },
     },
     // General
     typographyTitlesHighlight: {
         fontSize: '3rem',
         fontWeight: 'bold',
-        margin: '16px 0',
+        margin: '1em 0 1em 0',
         '@media (max-width: 600px)': {
             fontSize: '2rem', // Adjust font size for smaller screens
         },
         color: '#D4AC0D',
         textAlign: 'center',
-
+        '@media (min-width: 1200px)': {
+            maxWidth: 'initial',
+        },
     },
     titleBox: {
         display: 'flex',

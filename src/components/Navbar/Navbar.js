@@ -52,7 +52,7 @@ function Navbar(props) {
             <HideOnScroll {...props}>
                 {/* <Box sx={navBarStyles.box}> */}
                 <AppBar position="fixed" sx={navBarStyles.appBar}>
-                    <Toolbar>
+                    <Toolbar >
                         <Box
                             component="img"
                             sx={{

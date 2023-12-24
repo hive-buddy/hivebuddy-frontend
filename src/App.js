@@ -8,7 +8,9 @@ import HiveBuddyDesc from "./pages/HiveBuddy/HiveBuddyDesc";
 import Login from "./pages/Login/Login";
 import {useState} from "react";
 import HiveId from "./pages/Login/HiveId";
-
+import Process from "./pages/Process/Process";
+import Footer from "./pages/Footer/Footer";
+import Break from "./pages/Break/Break";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,10 +24,12 @@ function App() {
                     <Navbar />
                     <HiveBuddy />
                     <HiveBuddyDesc />
-                    {/*<Team />*/}
+                    <Team />
+                    <Break />
                     {/* <Strengths /> */}
-                    {/* <Process /> */}
+                     <Process />
                     <Login />
+                    <Footer />
                 </>
             } />
             <Route path='/enter' element={<Overview />} />

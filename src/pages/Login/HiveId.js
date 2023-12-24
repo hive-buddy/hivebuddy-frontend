@@ -40,7 +40,7 @@ const HiveId = () => {
             });
 
             if (response.ok) {
-                // handle successful login, navigate to the user's home page
+                // TODO: handle successful login, navigate to the user's home page
             } else {
                 alert("Unauthorized login")
             }
@@ -83,18 +83,6 @@ const HiveId = () => {
                     >
                         Log In
                     </Button>
-                    <Grid container>
-                        {/*<Grid item xs>*/}
-                        {/*    <Link href="#" variant="body2">*/}
-                        {/*        Forgot password?*/}
-                        {/*    </Link>*/}
-                        {/*</Grid>*/}
-                        {/*<Grid item>*/}
-                        {/*    <Link href="#" variant="body2">*/}
-                        {/*        {"Don't have an account? Sign Up"}*/}
-                        {/*    </Link>*/}
-                        {/*</Grid>*/}
-                    </Grid>
                 </Box>
             </Box>
             <Copyright sx={{mt: 8, mb: 4}}/>

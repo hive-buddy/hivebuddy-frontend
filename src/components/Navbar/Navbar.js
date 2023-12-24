@@ -50,7 +50,7 @@ function Navbar(props) {
         <React.Fragment>
             <CssBaseline />
             <HideOnScroll {...props}>
-                {/* <Box sx={navBarStyles.box}> */}
+                <Box sx={navBarStyles.box}>
                 <AppBar position="fixed" sx={navBarStyles.appBar}>
                     <Toolbar>
                         <Box
@@ -80,7 +80,7 @@ function Navbar(props) {
                         </Tabs>
                     </Toolbar>
                 </AppBar>
-                {/* </Box> */}
+                </Box>
             </HideOnScroll>
             <Toolbar />
         </React.Fragment>

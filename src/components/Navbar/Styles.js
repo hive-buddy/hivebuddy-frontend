@@ -24,14 +24,14 @@ export const navBarStyles = {
         },
 
     },
-    // tabCentering: {
-    //     ml: '120px',
-    //     mt: '10px',
-    // },
-    // tabs: {
-    //     color: 'black',
-    //     fontSize: '1rem',
-    // },
+    tabCentering: {
+        ml: '120px',
+        mt: '10px',
+    },
+    tabs: {
+        color: 'black',
+        fontSize: '1rem',
+    },
     logo: {
         display: 'flex',
         alignItems: 'center',
@@ -46,9 +46,5 @@ export const navBarStyles = {
     navLink: {
         color: '#fff',
         textDecoration: 'none',
-        // padding: theme.spacing(1, 2),
-        '&:hover': {
-            backgroundColor: '#777',
-        },
     },
 }

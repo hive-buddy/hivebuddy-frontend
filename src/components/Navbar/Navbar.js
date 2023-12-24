@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Toolbar from '@mui/material/Toolbar';
-import { mainNavBarItems } from "./consts/navBarItems";
-import { navBarStyles } from "./Styles";
+import {mainNavBarItems} from "./consts/navBarItems";
+import {navBarStyles} from "./Styles";
 import {
     useNavigate
 } from "react-router-dom";
 import PropTypes from 'prop-types';
-import { Tabs, Tab, Typography } from '@mui/material';
-import { AppBar, Box } from "@mui/material";
+import {Tabs, Tab, Typography} from '@mui/material';
+import {AppBar, Box} from "@mui/material";
 import Slide from '@mui/material/Slide';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import CssBaseline from '@mui/material/CssBaseline';
 
 function HideOnScroll(props) {
-    const { children, window } = props;
+    const {children, window} = props;
     // Note that you normally won't need to set the window ref as useScrollTrigger
     // will default to window.
     // This is only being set here because the demo is in an iframe.
@@ -42,15 +42,14 @@ function Navbar(props) {
     const [value, setValue] = useState(0);
     const navigate = useNavigate();
     const handleRoute = (route) => {
-        // console.log(route);
         navigate(route); // New line
     };
 
     return (
         <React.Fragment>
-            <CssBaseline />
+            <CssBaseline/>
             <HideOnScroll {...props}>
-                {/* <Box sx={navBarStyles.box}> */}
+                <Box sx={navBarStyles.box}>
                 <AppBar position="fixed" sx={navBarStyles.appBar}>
                     <Toolbar >
                         <Box
@@ -67,23 +66,26 @@ function Navbar(props) {
                         <Typography sx={navBarStyles.logoText}>HiveBuddy</Typography>
 
                         <Tabs
-                            TabIndicatorProps={{ sx: { backgroundColor: "#000000" } }}
+                            TabIndicatorProps={{sx: {backgroundColor: "#000000"}}}
                             value={value}
                             onChange={(e, val) => setValue(val)}
                             sx={navBarStyles.tabCentering}
                         >
                             {mainNavBarItems.map((item, index) => (
-                                <Tab key={index} label={item.label} sx={navBarStyles.tabs} onClick={() => { handleRoute(item.route) }}></Tab>
+                                <Tab key={index} label={item.label} sx={navBarStyles.tabs} onClick={() => {
+                                    handleRoute(item.route)
+                                }}></Tab>
                             ))}
                             {/* <Tab key="4" label="Test" sx={navBarStyles.tabs} onClick={() => { handleRoute("test")}}></Tab> */}
                             {/* <LinkTab label="Page One" href="/drafts" /> */}
                         </Tabs>
                     </Toolbar>
                 </AppBar>
-                {/* </Box> */}
+                </Box>
             </HideOnScroll>
-            <Toolbar />
+            <Toolbar/>
         </React.Fragment>
     )
 }
+
 export default Navbar

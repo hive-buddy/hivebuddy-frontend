@@ -6,27 +6,26 @@ import {theme} from '../consts/themes'
 
 const SOCKET_URL = 'http://localhost:8080/ws-message';
 
-
 const Team = () => {
     return (
         <ThemeProvider theme={theme}>
             <Container sx={PageStyles.containerImage}>
-                <Typography variant="h4" align="center" gutterBottom
-                            sx={{...PageStyles.typographyTitlesHighlight, fontFamily: 'Ubuntu'}}>
+                <Container className="font-face-gm" variant="h4" align="center" gutterBottom
+                            sx={{...PageStyles.typographyTitlesHighlight}}>
                     Our team
-                </Typography>
+                </Container>
                 <Grid container spacing={3} justifyContent="center">
                     {itemData.map((item) => (
-                        <Grid item key={item.img}>
+                        <Grid item key={item.img} sx={{padding: '2.5em 2.5em 0 0', elevation: '20'}}>
                             <Card sx={{maxWidth: 300}}>
                                 <CardMedia
                                     component="img"
                                     image={`${item.img}?fit=crop&w=300&max-h=300`}
                                     alt={item.title}
                                     loading="lazy"
-                                    sx={{ height: 300 }}
+                                    sx={{ height: 300, background: '#f3f3f3' }}
                                 />
-                                <CardContent>
+                                <CardContent sx={{background: '#eaeaea' }}>
                                     <Typography variant="h6" component="div">
                                         {item.title}
                                     </Typography>

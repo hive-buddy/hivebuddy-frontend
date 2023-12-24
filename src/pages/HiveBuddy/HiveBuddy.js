@@ -19,8 +19,9 @@ const HiveBuddy = () => {
         <Box sx={PageStyles.boxHiveBuddy}>
             <Box sx={PageStyles.titleBox}>
                 <Grow in={checked}>
-                    <Typography sx={PageStyles.typographyTitles} variant='h5'>What is HiveBuddy?
-                    </Typography>
+                    <Container className="font-face-gm" sx={PageStyles.typographyTitles} variant='h5'>
+                        What is HiveBuddy?
+                    </Container>
                 </Grow>
             </Box>
         </Box>

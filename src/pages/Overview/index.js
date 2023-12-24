@@ -1,26 +1,30 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import SockJsClient from 'react-stomp';
-import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import SensorButton from '../../components/SensorButton/SensorButton';
+import {sensors} from "./../../components/SensorButton/sensorItems";
+import {Box} from "@mui/material";
+import {PageStyles} from "./../consts/pageStyles";
+import {makeStyles} from "@mui/styles";
+import {Stack} from "@mui/system";
 
 const SOCKET_URL = 'http://localhost:8080/ws-message';
-
+const useStyles = makeStyles({
+    raise: {
+        '&:hover, &:focus': {
+            boxShadow: '0 0.5em 0.5em -0.4em var(--hover)',
+            transform: 'translateY(-0.25em)',
+        },
+    },
+});
 const Overview = () => {
-
-
     // const sensorTypeIds = [1, 2, 3, 4, 5];
     // const valuesArray = [];
     // sensorTypeIds.forEach((sensorId) => {
     //     valuesArray.push([sensorId, 0]);
     // });
-
-    // const [values, setValues]= useState(new Map());
-    const [sensorOne, setSensorOne] = useState({});
-    const [sensorTwo, setSensorTwo] = useState({});
-    const [sensorThree, setSensorThree] = useState({});
-    const [sensorFour, setSensorFour] = useState({});
-    const [sensorFive, setSensorFive] = useState({});
+    const [sensorData, setSensorData] = useState({});
+    const classes = useStyles();
 
     let onConnected = () => {
         console.log("Connected!!");
@@ -32,54 +36,66 @@ const Overview = () => {
 
     let onValuesReceived = (data) => {
         // console.log("Received data:");
-        console.log(data);
         // console.log(data.message);
         // console.log(data.message.map((obj) => {obj.value}));
         // console.log(Object.keys(data));
         // const receivedData = data.message;
         // setValues(Object.entries(data));
         // console.log(values);
-        switch (data.sensorTypeId) {
-            case 1:
-                setSensorOne(data);
-                break;
-            case 2:
-                setSensorTwo(data);
-                break;
-            case 3:
-                setSensorThree(data);
-                break;
-            case 4:
-                setSensorFour(data);
-                break;
-            case 5:
-                setSensorFive(data);
-                break;
-            default:
-                return;
-        }
+        console.log(data);
+        setSensorData((prevData) => ({
+            ...prevData,
+            [data.sensorTypeId]: data,
+        }));
     }
+    console.log(sensors.find(s => s.id === 1).name);
 
-    
 
     return (
-        <div>
+        <Box sx={PageStyles.boxDashboard}>
             <SockJsClient
                 url={SOCKET_URL}
                 topics={['/topic/overview/1/1']}
                 onConnect={onConnected}
-                onDisconnect={console.log("Disconnected!")}
+                onDisconnect={() => console.log("Disconnected!")}
                 onMessage={data => onValuesReceived(data)}
                 debug={false}
             />
-            <ButtonGroup fullWidth="true" size="large" variant="text" aria-label="text button group">
-                <SensorButton sensor={sensorOne} />
-                <SensorButton sensor={sensorTwo} />
-                <SensorButton sensor={sensorThree} />
-                <SensorButton sensor={sensorFour} />
-                <SensorButton sensor={sensorFive} />
+
+            <ButtonGroup
+                sx={{'--ButtonGroup-radius': '60px'}}
+                fullWidth size="large"
+                variant="outlined"
+                aria-label="outlined button group"
+                color="warning">
+                {[1, 2, 3, 4, 5].map((sensorTypeId) => (
+                    <SensorButton
+                        key={sensorTypeId}
+                        sensor={sensorData[sensorTypeId] || {}}
+                        sensorName={sensors.find(s => s.id === sensorTypeId).name}
+                    />
+                ))}
             </ButtonGroup>
-        </div>
+        </Box>
+        // <div>
+        //     <SockJsClient
+        //         url={SOCKET_URL}
+        //         topics={['/topic/overview/1/1']}
+        //         onConnect={onConnected}
+        //         onDisconnect={console.log("Disconnected!")}
+        //         onMessage={data => onValuesReceived(data)}
+        //         debug={false}
+        //     />
+        //
+        //     <ButtonGroup fullWidth="true" size="large" variant="text" aria-label="text button group">
+        //         {[1, 2, 3, 4, 5].map((sensorTypeId) => (
+        //             <SensorButton key={sensorTypeId}
+        //                           sensor={sensorData[sensorTypeId] || {}}
+        //                           sensorName={sensors.find(s => s.id === sensorTypeId).name}
+        //             />
+        //         ))}
+        //     </ButtonGroup>
+        // </div>
     );
 }
 

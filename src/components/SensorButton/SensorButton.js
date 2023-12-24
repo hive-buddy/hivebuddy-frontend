@@ -2,12 +2,20 @@ import {useState, useEffect} from 'react';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
-import {sensors} from "./sensorItems";
+import {makeStyles} from "@mui/styles";
 
+const useStyles = makeStyles({
+    raise: {
+        '&:hover, &:focus': {
+            boxShadow: '0 0.5em 0.5em -0.4em var(--hover)',
+            transform: 'translateY(-0.25em)',
+        },
+    },
+});
 const realtime_delay = 3; // in seconds
 
 const SensorButton = (props) => {
-
+    const classes = useStyles();
     const [dateState, setDateState] = useState(new Date());
 
     useEffect(() => {
@@ -29,17 +37,17 @@ const SensorButton = (props) => {
         }
         return "No available data";
     };
-    const getSensorName = (sensorTypeId) => {
-        const sensor = sensors.find(s => s.id === sensorTypeId);
-        return sensor ? sensor.name : "Unknown Sensor";
-    };
 
     return (
         <Tooltip title={calculateSeconds(props.sensor.timestamp)} disableInteractive>
-            <Button style={{display: "block", textAlign: "middle"}}>
-                <Typography variant="h6">{getSensorName(sensors.name)}</Typography>
-                {/* <Typography variant="body1">{props.sensor.value}</Typography> */}
-                <Typography variant="body1">{props.sensor.timestamp}</Typography>
+
+            <Button style={{display: "block", textAlign: "middle"}}
+                    className={classes.raise}
+                    // variant="outlined"
+            >
+                <Typography variant="h6">{props.sensorName}</Typography>
+                <Typography variant="body1">{props.sensor.value}</Typography>
+                {/*<Typography variant="body1">{props.sensor.timestamp}</Typography>*/}
             </Button>
         </Tooltip>
     );

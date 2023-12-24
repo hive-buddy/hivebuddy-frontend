@@ -1,11 +1,11 @@
 export const sensors = [
     {
         id: 1,
-        name: 'Outside temperature'
+        name: 'Out temperature'
     },
     {
         id: 2,
-        name: 'Inside temperature'
+        name: 'In temperature'
     },
     {
         id: 3,

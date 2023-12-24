@@ -62,6 +62,19 @@ export const PageStyles = {
         minHeight: '100vh',
         margin: '0 auto',
     },
+    //Dashboard Page
+    boxDashboard: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh"
+    },
+    raise: {
+        '&:hover, &:focus': {
+            boxShadow: '0 0.5em 0.5em -0.4em var(--hover)',
+            transform: 'translateY(-0.25em)',
+        },
+    },
 }
 
 

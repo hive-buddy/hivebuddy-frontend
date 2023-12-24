@@ -21,7 +21,7 @@ export const mainNavBarItems = [
     },
     {
         id: 4,
-        label: 'Enter',
+        label: 'My dashboard',
         route: '/enter',
     }
 ]

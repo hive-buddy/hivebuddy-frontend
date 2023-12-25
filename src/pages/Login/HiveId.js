@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 
 function Copyright(props) {
     return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        <Typography variant="body2" color="text.secondary" align="center" {...props} fo>
             {'Copyright © '}
             HiveBuddy
             {new Date().getFullYear()}

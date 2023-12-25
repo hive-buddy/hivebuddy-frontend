@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Container} from "@mui/material";
+import {Button, Container, Typography} from "@mui/material";
 import {PageStyles} from "../consts/pageStyles";
 import {useNavigate} from "react-router-dom";
 
@@ -11,13 +11,23 @@ const Login = () => {
         navigate('/HiveId');
     };
     return (
-        <Container style={{background:'grey', height:'40vh', flexDirection:'column', fontSize:'30px'}} className="font-face-gm" sx={PageStyles.container}>
-            Already have our device?
-            <Container style={{color:'#f1c400',marginTop:'1em', flexDirection:'column'}} className="font-face-gm" sx={PageStyles.container}>
-                Then click on the button below to login into your account
-                <strong>with personal hive information!</strong>
-            </Container>
-            <Button style={{marginTop:'1em'}} variant="outlined" size="medium" sx={PageStyles.container} onClick={navigateToHiveID}>Log in</Button>
+        <Container style={{
+            background: '#EEEEEE',
+            height: '40vh',
+            flexDirection: 'column',
+            fontSize: '30px'
+        }} sx={PageStyles.container}>
+            <Typography variant='h4' sx={{...PageStyles.typographyTitlesHighlight, color: 'black'}}>
+                Already have our device?
+            </Typography>
+           <Typography variant='h5'  sx={{...PageStyles.titleLogIn}}> Then click on the button below to login into your account
+               <strong> with your hive id!</strong></Typography>
+
+            <Button variant="outlined" size="small"
+                    onClick={navigateToHiveID}
+                    sx={{...PageStyles.buttonLog}}>
+                <Typography>Log in</Typography>
+            </Button>
         </Container>
     )
 }

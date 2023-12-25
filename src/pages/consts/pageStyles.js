@@ -16,13 +16,12 @@ export const PageStyles = {
         },
         color: '#ffffff',
         textAlign: 'center',
-        //fontFamily: 'Ubuntu'
+        fontFamily: 'Book Antiqua',
     },
-    descContainer:{
-        color: '#c76c13',
-        background: 'rgb(243,224,157)',
-        padding:'0 5em 0 5em;',
-        fontSize: '1.4rem',
+    descContainer: {
+        color: 'black',
+        background: '#EBD671',
+        fontSize: '1.5rem',
         height: '60vh',
         display: 'flex',
         flexDirection: 'row',
@@ -34,14 +33,13 @@ export const PageStyles = {
         },
         '@media (min-width: 600px)': {
             padding: '0 5em 0 5em;'
-        }
+        },
     },
 
     // Team Page
     container: {
         color: '#030000',
         fontSize: '1.5rem',
-        // height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -51,26 +49,25 @@ export const PageStyles = {
     },
 
     containerImage: {
-        color: '#030000',
         fontSize: '1.5rem',
-        height: '100vh',
+        height: '155vh',
         '@media (min-width: 1200px)': {
             maxWidth: 'initial',
         },
     },
     // General
     typographyTitlesHighlight: {
-        fontSize: '3rem',
         fontWeight: 'bold',
         margin: '1em 0 1em 0',
         '@media (max-width: 600px)': {
             fontSize: '2rem', // Adjust font size for smaller screens
         },
-        color: '#D4AC0D',
+        color: '#EBD671',
         textAlign: 'center',
         '@media (min-width: 1200px)': {
             maxWidth: 'initial',
         },
+        fontFamily: 'Book Antiqua',
     },
     titleBox: {
         display: 'flex',
@@ -101,6 +98,23 @@ export const PageStyles = {
             transform: 'translateY(-0.25em)',
         },
     },
+    buttonLog: {
+        margin: '1em 0 1em 0',
+        '@media (max-width: 600px)': {
+            fontSize: '2rem', // Adjust font size for smaller screens
+        },
+        textAlign: 'center',
+    },
+    titleLogIn: {
+        fontFamily: 'Book Antiqua',
+        color: 'black',
+    },
+    containerPage: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+    }
 }
 
 

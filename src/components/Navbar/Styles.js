@@ -2,8 +2,8 @@ import {spacing} from "@mui/system";
 
 export const navBarStyles = {
     appBar: {
-        fontFamily: 'monospace',
-        backgroundColor: 'rgba(241,196,0,1)',
+        fontFamily: 'Book Antiqua',
+        backgroundColor: '#EEEEEE',
         height: '80px',
         '@media (max-width: 600px)': {
             height: '60px',
@@ -14,11 +14,11 @@ export const navBarStyles = {
     },
     logoText: {
         color: 'black',
-        fontFamily: 'monospace',
+        fontFamily: 'Book Antiqua',
         fontWeight: 'bold',
         fontSize: '2rem',
-        // mt: '10px',
-        // ml: '10px',
+        mt: '10px',
+        ml: '10px',
         '@media (max-width: 600px)': {
             fontSize: '20px',
         },

@@ -1,10 +1,10 @@
-import bed from '../img/4.png'
+// import bed from '../img/4.png'
 
 export const ProcessPhoto=[
-        {
-            img: bed,
-            title: 'Bed',
-        },
+        // {
+        //     // img: bed,
+        //     // title: 'Bed',
+        // },
         {
             img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
             title: 'Books',

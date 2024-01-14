@@ -57,6 +57,7 @@ function Process() {
 
     return (
         <Container sx={PageStyles.containerPage}>
+            {/*<Typography sx={PageStyles.typographyTitlesHighlight}>Our project path</Typography>*/}
             <Box sx={{maxWidth: 400, flexGrow: 1,}}>
                 <Paper
                     square

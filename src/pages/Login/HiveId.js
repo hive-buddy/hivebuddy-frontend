@@ -3,11 +3,13 @@ import {
     Box,
     Container,
     CssBaseline,
-    Grid,
     TextField,
     Typography
 } from "@mui/material";
 import Button from "@mui/material/Button";
+import {Route, useNavigate} from "react-router-dom";
+
+const SOCKET_URL = 'ws://localhost:8080/ws-message';
 
 function Copyright(props) {
     return (
@@ -21,33 +23,63 @@ function Copyright(props) {
 }
 
 const HiveId = () => {
-    const [id, setId] = useState("");
+    const navigate = useNavigate();
+    const [hiveId, setId] = useState("");
+
     const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            hiveId: data.get('hiveId'),
-        });
+        // event.preventDefault();
+        // console.log({
+        //     hiveId,
+        // });
     };
-    const handleLogin = async () => {
+
+    async function handleLogin() {
+
         try {
-            const response = await fetch('/api/v1/data/login', {
-                method: 'POST',
+            const response = await fetch(`/api/v1/data/login/${hiveId}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ hiveId: id }),
+                }
             });
+            const contentType = response.headers.get('Content-Type');
+            console.log(`Content-Type: ${contentType}`);
+            const data = await response.json();
 
-            if (response.ok) {
-                // TODO: handle successful login, navigate to the user's home page
+            if (data === 'false'){
+                navigate("/login");
             } else {
-                alert("Unauthorized login")
+                alert("no HiveId " + hiveId);
+                console.log(data);
+                console.log("Error during login:", response);
             }
         } catch (error) {
-            console.error('Error during login:', error);
+            console.error("Error during login:", error);
         }
-    };
+    }
+
+    //
+    // const handleLogin = () => {
+    //     dispatch(fetchHiveId().resolve).then(() => {
+    //         // if (hiveId !== "-") {
+    //             navigate("/login");
+    //         // history.push("/login/1");
+    //         // Route.
+    //     // }
+    //     });
+    // }
+
+    const enter = () => {
+        navigate("/login/" + hiveId);
+    }
+
+    async function testHiveId() {
+        console.log(hiveId);
+        const response = await fetch('http://localhost:8080/api/v1/data/login/' + hiveId);
+        console.log(response.data);
+        // if (response.body.locked)
+    }
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
@@ -62,7 +94,8 @@ const HiveId = () => {
                 <Typography component="h1" variant="h5">
                     Log in
                 </Typography>
-                <Box component="form" onSubmit={handleLogin} noValidate sx={{mt: 1}}>
+                <Box component="form" noValidate sx={{mt: 1}}>
+                {/*<Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>*/}
                     <TextField
                         margin="normal"
                         required
@@ -72,14 +105,17 @@ const HiveId = () => {
                         name="hiveId"
                         autoComplete="hiveId"
                         autoFocus
-                        value={id}
+                        value={hiveId}
                         onChange={(event) => setId(event.target.value)}
                     />
                     <Button
-                        type="submit"
+                        // type="submit"
                         fullWidth
                         variant="contained"
                         sx={{mt: 3, mb: 2}}
+                        // onClick={handleLogin}
+                        // onClick={enter}
+                        onClick={testHiveId}
                     >
                         Log In
                     </Button>

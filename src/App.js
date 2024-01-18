@@ -9,7 +9,7 @@ import Login from "./pages/Login/Login";
 import {useState} from "react";
 import HiveId from "./pages/Login/HiveId";
 import Process from "./pages/Process/Process";
-import Footer from "./pages/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import Break from "./pages/Break/Break";
 
 function App() {
@@ -32,9 +32,9 @@ function App() {
                     <Footer />
                 </>
             } />
-            <Route path='/enter' element={<Overview />} />
+            <Route path='/login/*' element={<Overview />} />
             <Route path='/HiveId' element={<HiveId />} />
-            <Route path='login' element={<h1>Login Page Component</h1>} />
+            {/*<Route path='login' element={<h1>Login Page Component</h1>} />*/}
         </Routes>
     );
 }

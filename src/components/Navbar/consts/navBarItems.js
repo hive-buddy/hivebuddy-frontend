@@ -19,9 +19,9 @@ export const mainNavBarItems = [
         label: 'How is it done?',
         route: '/',
     },
-    {
-        id: 4,
-        label: 'My dashboard',
-        route: '/enter',
-    }
+    // {
+    //     id: 4,
+    //     label: 'My dashboard',
+    //     route: '/enter',
+    // }
 ]

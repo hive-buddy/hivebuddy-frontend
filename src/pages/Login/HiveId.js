@@ -23,16 +23,10 @@ function Copyright(props) {
 }
 
 
-
 const HiveId = () => {
     const navigate = useNavigate();
     const [hiveId, setId] = useState("");
-    const handleSubmit = (event) => {
-        // event.preventDefault();
-        // console.log({
-        //     hiveId,
-        // });
-    };
+
 
     async function handleLogin() {
 
@@ -40,21 +34,21 @@ const HiveId = () => {
             const response = await fetch(`/api/v1/data/login/${hiveId}`, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'text/html',
+                    'Content-Type': 'application/json',
                 }
             });
 
             const contentType = response.headers.get('Content-Type');
             console.log(`Content-Type: ${contentType}`);
-            // const data = await response.json();
 
-            // navigate("/login/" + hiveId);
-            if (hiveId === '1') {
+            if (response.status === 200 && hiveId === '1') {
                 navigate("/login/" + hiveId);
+                console.log(response.status)
+                console.log(response);
+                console.log("Redirected:", response.redirected);
+
             } else {
-                alert("no HiveId " + hiveId);
-                // console.log(data);
-                // console.log("Error during login1:", response);
+                alert("No HiveId " + hiveId);
             }
         } catch (error) {
             console.error("Error during login:", error);
@@ -67,9 +61,8 @@ const HiveId = () => {
 
     async function testHiveId() {
         console.log(hiveId);
-        const response = await fetch('http://localhost:8080/api/v1/data/login/' + hiveId);
+        const response = await fetch(`/api/v1/data/login/${hiveId}` + hiveId);
         console.log(response.data);
-        // if (response.body.locked)
     }
 
     return (
@@ -105,8 +98,7 @@ const HiveId = () => {
                         fullWidth
                         variant="contained"
                         sx={{mt: 3, mb: 2}}
-                        // onClick={handleLogin}
-                        // onClick={enter}
+
                         onClick={handleLogin}
                     >
                         Log In

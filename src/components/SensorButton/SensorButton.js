@@ -1,8 +1,10 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import {makeStyles} from "@mui/styles";
+import {useNavigate} from "react-router-dom";
+import {sensors} from "./sensorItems";
 
 const useStyles = makeStyles({
     raise: {
@@ -14,9 +16,14 @@ const useStyles = makeStyles({
 });
 const realtime_delay = 3; // in seconds
 
-const SensorButton = (props) => {
+const SensorButton = ({ onClick, ...props }) => {
     const classes = useStyles();
     const [dateState, setDateState] = useState(new Date());
+    const navigate = useNavigate();
+
+    const handleSensor = (sensor) => {
+        navigate(`/sensor/${sensor}`);
+    };
 
     useEffect(() => {
         setInterval(() => setDateState(new Date()), realtime_delay * 1000);
@@ -40,14 +47,14 @@ const SensorButton = (props) => {
 
     return (
         <Tooltip title={calculateSeconds(props.sensor.timestamp)} disableInteractive>
-
-            <Button style={{display: "block", textAlign: "middle"}}
-                    className={classes.raise}
-                    // variant="outlined"
+            <Button
+                style={{ display: "block", textAlign: "middle" }}
+                className={classes.raise}
+                onClick={onClick}
+                //onClick={() => handleSensor(props.sensor.id)}
             >
                 <Typography variant="h6">{props.sensorName}</Typography>
                 <Typography variant="body1">{props.sensor.value}</Typography>
-                {/*<Typography variant="body1">{props.sensor.timestamp}</Typography>*/}
             </Button>
         </Tooltip>
     );

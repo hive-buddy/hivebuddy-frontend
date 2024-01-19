@@ -6,6 +6,7 @@ import {sensors} from "./../../components/SensorButton/sensorItems";
 import {Box} from "@mui/material";
 import {PageStyles} from "./../consts/pageStyles";
 import {makeStyles} from "@mui/styles";
+import {useNavigate} from "react-router-dom";
 
 const SOCKET_URL = 'http://localhost:8080/ws-message';
 const useStyles = makeStyles({
@@ -33,8 +34,12 @@ const Overview = () => {
     const [sensorData, setSensorData] = useState({});
     const [topics, setTopics] = useState([""]);
     const classes = useStyles();
+    const navigate = useNavigate();
 
 
+    const handleSensor = (sensor) => {
+        navigate(`/sensor/${sensor}`);
+    };
     let onConnected = () => {
         setTopics(['/topic/overview/1/1']);
         console.log("Connected!!");
@@ -67,7 +72,7 @@ const Overview = () => {
             />
 
             <ButtonGroup
-                sx={{'--ButtonGroup-radius': '60px'}}
+                sx={{'--ButtonGroup-radius': '60px',  borderRadius: 'var(--ButtonGroup-radius)'}}
                 fullWidth size="large"
                 variant="outlined"
                 aria-label="outlined button group"
@@ -77,8 +82,10 @@ const Overview = () => {
                         key={sensorTypeId}
                         sensor={sensorData[sensorTypeId] || {}}
                         sensorName={sensors.find(s => s.id === sensorTypeId).name}
+                        onClick={() => handleSensor(sensors.find(s => s.id === sensorTypeId).name)}
                     />
                 ))}
+
             </ButtonGroup>
         </Box>
 

@@ -34,7 +34,6 @@ function App() {
             } />
             <Route path='/login/*' element={<Overview />} />
             <Route path='/HiveId' element={<HiveId />} />
-            {/*<Route path='login' element={<h1>Login Page Component</h1>} />*/}
         </Routes>
     );
 }

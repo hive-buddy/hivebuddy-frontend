@@ -7,7 +7,7 @@ import {
     Typography
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import {Route, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const SOCKET_URL = 'ws://localhost:8080/ws-message';
 
@@ -22,10 +22,11 @@ function Copyright(props) {
     );
 }
 
+
+
 const HiveId = () => {
     const navigate = useNavigate();
     const [hiveId, setId] = useState("");
-
     const handleSubmit = (event) => {
         // event.preventDefault();
         // console.log({
@@ -39,35 +40,26 @@ const HiveId = () => {
             const response = await fetch(`/api/v1/data/login/${hiveId}`, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/html',
                 }
             });
+
             const contentType = response.headers.get('Content-Type');
             console.log(`Content-Type: ${contentType}`);
-            const data = await response.json();
+            // const data = await response.json();
 
-            if (data === 'false'){
-                navigate("/login");
+            // navigate("/login/" + hiveId);
+            if (hiveId === '1') {
+                navigate("/login/" + hiveId);
             } else {
                 alert("no HiveId " + hiveId);
-                console.log(data);
-                console.log("Error during login:", response);
+                // console.log(data);
+                // console.log("Error during login1:", response);
             }
         } catch (error) {
             console.error("Error during login:", error);
         }
     }
-
-    //
-    // const handleLogin = () => {
-    //     dispatch(fetchHiveId().resolve).then(() => {
-    //         // if (hiveId !== "-") {
-    //             navigate("/login");
-    //         // history.push("/login/1");
-    //         // Route.
-    //     // }
-    //     });
-    // }
 
     const enter = () => {
         navigate("/login/" + hiveId);
@@ -95,7 +87,7 @@ const HiveId = () => {
                     Log in
                 </Typography>
                 <Box component="form" noValidate sx={{mt: 1}}>
-                {/*<Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>*/}
+                    {/*<Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>*/}
                     <TextField
                         margin="normal"
                         required
@@ -115,7 +107,7 @@ const HiveId = () => {
                         sx={{mt: 3, mb: 2}}
                         // onClick={handleLogin}
                         // onClick={enter}
-                        onClick={testHiveId}
+                        onClick={handleLogin}
                     >
                         Log In
                     </Button>

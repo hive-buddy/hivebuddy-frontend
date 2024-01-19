@@ -6,7 +6,6 @@ import {sensors} from "./../../components/SensorButton/sensorItems";
 import {Box} from "@mui/material";
 import {PageStyles} from "./../consts/pageStyles";
 import {makeStyles} from "@mui/styles";
-import { AuthHiveId } from "../../util/AuthHiveId";
 
 const SOCKET_URL = 'http://localhost:8080/ws-message';
 const useStyles = makeStyles({
@@ -18,32 +17,27 @@ const useStyles = makeStyles({
     },
 });
 
-function checkHiveId() {
-    const check = AuthHiveId("1");
-    console.log(check);
-}
+
 
 const Overview = () => {
     // const sensorTypeIds = [1, 2, 3, 4, 5];
     // const valuesArray = [];
     // sensorTypeIds.forEach((sensorId) => {
     //     valuesArray.push([sensorId, 0]);
-    // });
+    // });  // useEffect(() => {
+    //     //     // checkHiveId();
+    //     //     (async () =>
+    //     //         await AuthHiveId(1)
+    //     //     )();
+    //     // }, []);
     const [sensorData, setSensorData] = useState({});
     const [topics, setTopics] = useState([""]);
     const classes = useStyles();
 
-    useEffect(() => {
-        // checkHiveId();
-        (async () =>
-            await AuthHiveId(1)
-        )();
-    }, []);
 
     let onConnected = () => {
         setTopics(['/topic/overview/1/1']);
         console.log("Connected!!");
-        // checkHiveId().then(r => );
     }
 
     let onValuesReceived = (data) => {

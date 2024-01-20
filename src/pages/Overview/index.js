@@ -19,7 +19,6 @@ const useStyles = makeStyles({
 });
 
 
-
 const Overview = () => {
     // const sensorTypeIds = [1, 2, 3, 4, 5];
     // const valuesArray = [];
@@ -33,7 +32,6 @@ const Overview = () => {
     //     // }, []);
     const [sensorData, setSensorData] = useState({});
     const [topics, setTopics] = useState([""]);
-    const classes = useStyles();
     const navigate = useNavigate();
 
 
@@ -72,7 +70,7 @@ const Overview = () => {
             />
 
             <ButtonGroup
-                sx={{'--ButtonGroup-radius': '60px',  borderRadius: 'var(--ButtonGroup-radius)'}}
+                sx={{'--ButtonGroup-radius': '60px', borderRadius: 'var(--ButtonGroup-radius)'}}
                 fullWidth size="large"
                 variant="outlined"
                 aria-label="outlined button group"
@@ -85,7 +83,6 @@ const Overview = () => {
                         onClick={() => handleSensor(sensors.find(s => s.id === sensorTypeId).name)}
                     />
                 ))}
-
             </ButtonGroup>
         </Box>
 

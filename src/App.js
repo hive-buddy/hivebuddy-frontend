@@ -1,4 +1,5 @@
 import './App.css';
+import './App.css';
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HiveBuddy from "./pages/HiveBuddy/HiveBuddy";
@@ -11,6 +12,7 @@ import HiveId from "./pages/Login/HiveId";
 import Process from "./pages/Process/Process";
 import Footer from "./components/Footer/Footer";
 import Break from "./pages/Break/Break";
+import Sensors from "./pages/Sensors/Sensors";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +36,7 @@ function App() {
             } />
             <Route path='/login/*' element={<Overview />} />
             <Route path='/HiveId' element={<HiveId />} />
+            <Route path='/sensor/*' element={<Sensors />} />
         </Routes>
     );
 }

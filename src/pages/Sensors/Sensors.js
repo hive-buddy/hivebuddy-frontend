@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import CustomLineChart from "../../components/Graph/CustomLineChart"
 import {LineChart} from "@mui/x-charts";
 import {Container, Typography} from "@mui/material";
-import {sensors} from "./../../components/SensorButton/sensorItems";
+// import {sensors} from "../../components/SensorButton/SensorMap";
 import SensorButton from "../../components/SensorButton/SensorButton";
 import SockJsClient from "react-stomp";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -44,7 +44,7 @@ const Sensors = () => {
                     <SensorButton
                         key={sensorTypeId}
                          sensor={sensorData[sensorTypeId] || {}}
-                        sensorName={sensors.find(s => s.id === sensorTypeId).name}
+                        // sensorName={sensors.find(s => s.id === sensorTypeId).name}
                         // onClick={() => handleSensor(sensors.find(s => s.id === sensorTypeId).name)}
                     />
                 ))}

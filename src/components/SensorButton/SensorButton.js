@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import {makeStyles} from "@mui/styles";
+import {SensorMap} from "../SensorButton/SensorMap";
 
 const useStyles = makeStyles({
     raise: {
@@ -17,7 +18,8 @@ const realtime_delay = 3; // in seconds
 const SensorButton = ({onClick, ...props}) => {
     const classes = useStyles();
     const [dateState, setDateState] = useState(new Date());
-
+    const sensorName = SensorMap.find(s => s.id === props.sensorTypeId).name;
+    const sensorUnit = SensorMap.find(s => s.id === props.sensorTypeId).unit;
 
     useEffect(() => {
         setInterval(() => setDateState(new Date()), realtime_delay * 1000);
@@ -43,8 +45,8 @@ const SensorButton = ({onClick, ...props}) => {
                 className={classes.raise}
                 onClick={onClick}
             >
-                <Typography variant="h6">{props.sensorName}</Typography>
-                <Typography variant="body1">{props.sensor.value}</Typography>
+                <Typography variant="h6">{sensorName}</Typography>
+                <Typography variant="body1">{props.sensor.value + " " + sensorUnit}</Typography>
             </Button>
         </Tooltip>
     );

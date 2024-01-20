@@ -34,7 +34,7 @@ function App() {
                     <Footer />
                 </>
             } />
-            <Route path='/login/*' element={<Overview />} />
+            <Route path='/login/:hiveId/:pageId' element={<Overview />} />
             <Route path='/HiveId' element={<HiveId />} />
             <Route path='/sensor/*' element={<Sensors />} />
         </Routes>

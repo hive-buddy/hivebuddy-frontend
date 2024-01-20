@@ -1,8 +1,7 @@
-import axios from "axios";
 
-const SENSORS_API_BASE_URL = "http://localhost:8080/api/v1/data";
+// const SENSORS_API_BASE_URL = "http://localhost:8080/api/v1/data";
 
-class SensorDataService {
+// function SensorDataService {
 
-}
-export default SensorDataService
+// }
+// export default SensorDataService

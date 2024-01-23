@@ -4,7 +4,7 @@ import {Container, Typography, Grid, Card, CardMedia, CardContent, ThemeProvider
 import {PageStyles} from "../consts/pageStyles";
 import {theme} from '../consts/themes'
 
-const SOCKET_URL = 'http://localhost:8080/ws-message';
+// const SOCKET_URL = 'http://localhost:8080/ws-message';
 
 const Team = () => {
 

@@ -133,6 +133,4 @@ function Overview() {
         </Box>
     );
 }
-
-// src="https://cdn-icons-mp4.flaticon.com/512/12277/12277901.mp4"
 export default Overview;

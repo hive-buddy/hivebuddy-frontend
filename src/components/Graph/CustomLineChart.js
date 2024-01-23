@@ -44,11 +44,10 @@ const CustomLineChart = ({...props}) => {
         setAverage(avg);
     }
 
-    useEffect(() => {
-        // Call the function to calculate and display the average when sensorData changes
-        const avg = calculateAverage(test2);
-        setAverage(avg);
-    }, [test2]);
+    // useEffect(() => {
+    //     const avg = calculateAverage(test2);
+    //     setAverage(avg);
+    // }, [test2]);
     console.log("Average" + average)
     // console.log("val" + test2);
     // console.log("val" + testData);
@@ -67,24 +66,26 @@ const CustomLineChart = ({...props}) => {
     //         return body;
     //     }
     //     test();
+
     // }, []);
     useEffect(() => {
         const fetchData = async () => {
             const body = await getData();
             console.log(body);
-            setTestData({ data: body });
-            if (body.length > 0) {
-                setTest2(body.map(dataPoint => dataPoint.value));
-            }
+            setTestData({data: body});
+            setTest2(body.map(dataPoint => dataPoint.value));
+            //setTest2(body[0].value);
+            const avg = calculateAverage(test2);
+            setAverage(avg);
+            console.log(setTest2(body[0].value))
         };
 
         fetchData();
-    }, []);
-
+    }, [test2]);
     return (
         <Box>
             {/*<Typography variant="h6">{test2 ? "(" + test2 + ")" : "nodata"}</Typography>*/}
-            <Typography variant="h6">{testData.data[0] ? testData.data[1].value   : "nodata"}</Typography>
+            <Typography variant="h6">{testData.data[0] ? testData.data[1].value : "nodata"}</Typography>
             <LineChart
                 xAxis={[{data: xAxisData}]}
                 series={[

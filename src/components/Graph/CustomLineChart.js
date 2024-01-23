@@ -11,6 +11,8 @@ const CustomLineChart = ({...props}) => {
     const sensorData = props.sensorData;
     const xAxisData = props.xAxisData;
     const yAxisData = props.yAxisData;
+    const sensorName = props.sensorName;
+    const sensorUnit = props.sensorUnit;
     // console.log(props.sensorTypeId);
     // console.log(SensorMap.find(s => s.id === props.sensorTypeId));
     // const sensorName = SensorMap.find(s => s.id === props.sensorTypeId).name;

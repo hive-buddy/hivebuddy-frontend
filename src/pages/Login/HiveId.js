@@ -42,7 +42,7 @@ const HiveId = () => {
             console.log(`Content-Type: ${contentType}`);
 
             if (response.status === 200 && hiveId === '1') {
-                navigate("/login/" + hiveId + "/0");
+                navigate("/login/" + hiveId + "/1");
                 console.log(response.status)
                 console.log(response);
 

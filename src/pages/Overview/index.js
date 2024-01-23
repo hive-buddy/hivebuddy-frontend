@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import SockJsClient from 'react-stomp';
 // import ButtonGroup from '@mui/material/ButtonGroup';
 // import SensorButton from '../../components/SensorButton/SensorButton';
-import { PageStyles } from "./../consts/pageStyles";
+import {PageStyles} from "./../consts/pageStyles";
 // import { makeStyles } from "@mui/styles";
+import Footer from '../../components/Footer/Footer'
 import {Container, Box} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import SensorButtonGroup from '../../components/SensorButtonGroup/SensorButtonGroup';
@@ -14,7 +15,6 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import {SensorMap} from "../../components/SensorButton/SensorMap";
-
 
 const SOCKET_URL = 'http://localhost:8080/ws-message';
 
@@ -29,7 +29,7 @@ async function getData() {
 }
 
 function Overview() {
-    const { hiveId, pageId } = useParams();
+    const {hiveId, pageId} = useParams();
 
     const [sensorData, setSensorData] = useState({});
     const [topics, setTopics] = useState([]);
@@ -163,7 +163,7 @@ function Overview() {
                                             height="252"
                                             style={{display: 'block', margin: '0 auto'}}
                                             autoPlay
-                                            loop
+                                            // loop
                                             muted
                                             controls={false}
                                         />
@@ -172,9 +172,13 @@ function Overview() {
                             </Grid>
                         </Container>
                     </Box>
+                    <Footer/>
                 </>
             )}
         </Box>
+
     );
+
 }
+
 export default Overview;

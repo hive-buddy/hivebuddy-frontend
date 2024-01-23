@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {LineChart} from "@mui/x-charts";
 import {Box} from "@mui/material";
-import SockJsClient from "react-stomp";
 import Typography from "@mui/material/Typography";
-import { SensorMap } from '../SensorButton/SensorMap';
 const { DateTime } = require("luxon");
 
 
@@ -26,7 +24,7 @@ const CustomLineChart = ({...props}) => {
     // axis representing time
     // const xAxisData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     // const [xAxisData, setXAxisData] = useState([]);
-    
+
     // axis representing sensor value
     // const yAxisData = [2, 3, 5.5, 8.5, 1.5, 5, 1, 4, 3, 8];
     // const yAxisData = [];
@@ -48,10 +46,11 @@ const CustomLineChart = ({...props}) => {
         setAverage(avg);
     }
 
-    // useEffect(() => {
-    //     const avg = calculateAverage(test2);
-    //     setAverage(avg);
-    // }, [test2]);
+    useEffect(() => {
+        // Call the function to calculate and display the average when sensorData changes
+        const avg = calculateAverage(test2);
+        setAverage(avg);
+    }, [test2]);
     console.log("Average" + average)
     // console.log("val" + test2);
     // console.log("val" + testData);
@@ -70,33 +69,13 @@ const CustomLineChart = ({...props}) => {
     //         return body;
     //     }
     //     test();
-
     // }, []);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const body = await getData();
-            console.log(body);
-            setTestData({data: body});
-            setTest2(body.map(dataPoint => dataPoint.value));
-            //setTest2(body[0].value);
-            const avg = calculateAverage(test2);
-            setAverage(avg);
-            console.log(setTest2(body[0].value))
-        };
-
-        fetchData();
-    }, [test2]);
-    return (
-        <Box>
-            {/*<Typography variant="h6">{test2 ? "(" + test2 + ")" : "nodata"}</Typography>*/}
-            <Typography variant="h6">{testData.data[0] ? testData.data[1].value : "nodata"}</Typography>
 
 
 
 
     // console.log("val" + test2);
-    
+
     // useEffect(() => {
     //     console.log(xAxisData);
     //     console.log(yAxisData);
@@ -127,7 +106,7 @@ const CustomLineChart = ({...props}) => {
     const valueFormatter = (dateTimeJs) => {
         const dateTime = DateTime.fromJSDate(dateTimeJs); // Luxon DateTime
         return dateTime.toLocaleString(DateTime.TIME_24_SIMPLE);
-     };
+    };
 
     return (
         <Box>
@@ -136,8 +115,8 @@ const CustomLineChart = ({...props}) => {
             {/* <Typography variant="h6">{latestData.data[0] ? "(" + latestData.data[0].value + ")" : "nodata"}</Typography> */}
             <LineChart
                 xAxis={[
-                    { 
-                        scaleType: 'time', 
+                    {
+                        scaleType: 'time',
                         data: xAxisData,
                         valueFormatter: (value) => (value == null ? 'NaN' : valueFormatter(value))
                     }

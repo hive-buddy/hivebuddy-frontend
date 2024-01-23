@@ -1,26 +1,26 @@
 export const itemData = [
     {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/ArduinoLogo_%C2%AE.svg/2560px-ArduinoLogo_%C2%AE.svg.png',
+        img: 'https://cdn.pixabay.com/photo/2021/03/01/15/39/arduino-6060050_1280.jpg',
         title: 'Arduino Master',
         author: '@Sofia Hmyria',
     },
     {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/React_Logo_SVG.svg/768px-React_Logo_SVG.svg.png',
+        img: 'https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg',
         title: 'Back&Frontend Developer',
         author: '@Anna Deineko',
     },
     {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',
+        img: 'https://cdn.pixabay.com/photo/2016/11/19/14/16/man-1839500_1280.jpg',
         title: 'Back&Frontend Developer',
         author: '@Ross Rucka',
     },
     {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Condenser_microphone.svg',
+        img: 'https://cdn.pixabay.com/photo/2020/04/15/14/45/microphone-5046876_1280.jpg',
         title: 'Audio Engineer',
         author: '@Ben Lancry',
     },
     {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Spring_Boot.svg/768px-Spring_Boot.svg.png',
+        img: 'https://cdn.pixabay.com/photo/2015/12/15/19/54/hive-1094857_1280.jpg',
         title: 'Beekeeper',
         author: '@Oleksii Demydenko',
     },

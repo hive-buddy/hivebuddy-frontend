@@ -11,6 +11,7 @@ import SwipeableViews from 'react-swipeable-views';
 import {autoPlay} from 'react-swipeable-views-utils';
 import {Container, Divider} from "@mui/material";
 import {PageStyles} from "../consts/pageStyles";
+import img from './img/1.jpg'
 //TODO: background honeycomb, our pictures
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -18,8 +19,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const images = [
     {
         label: 'Arduino Time',
-        imgPath:
-            'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+        imgPath:"",
     },
     {
         label: 'Sensors Connection',
@@ -31,11 +31,6 @@ const images = [
         imgPath:
             'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
     },
-    // {
-    //     label: 'Goč, Serbia',
-    //     imgPath:
-    //         'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-    // },
 ];
 
 function Process() {

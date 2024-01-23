@@ -73,11 +73,11 @@ function Overview() {
                 setLoading(false);
             });
     }
+        useEffect(() => {
+            setLoading(true);
+            fetchInfo();
+        }, [hiveId, pageId])
 
-    useEffect(() => {
-        setLoading(true);
-        fetchInfo();
-    }, [hiveId, pageId])
 
     let onConnected = () => {
         setTopics(['/topic/overview/1/1']);

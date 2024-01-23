@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SockJsClient from 'react-stomp';
 // import ButtonGroup from '@mui/material/ButtonGroup';
 // import SensorButton from '../../components/SensorButton/SensorButton';
-import { Box } from "@mui/material";
 import { PageStyles } from "./../consts/pageStyles";
 // import { makeStyles } from "@mui/styles";
-import { useParams } from "react-router-dom";
 import {Container, Box} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import SensorButtonGroup from '../../components/SensorButtonGroup/SensorButtonGroup';
@@ -139,6 +137,8 @@ function Overview() {
                                             sensorData={sensorData}
                                             xAxisData={xAxisData}
                                             yAxisData={yAxisData}
+                                            sensorName={sensorName}
+                                            sensorUnit={sensorUnit}
                                         />
                                     </Paper>
                                 </Grid>

@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import {makeStyles} from "@mui/styles";
 import {SensorMap} from "../SensorButton/SensorMap";
 
+
+
 const useStyles = makeStyles({
     raise: {
         '&:hover, &:focus': {
@@ -20,7 +22,7 @@ const SensorButton = ({onClick, ...props}) => {
     const [dateState, setDateState] = useState(new Date());
     const sensorName = SensorMap.find(s => s.id === props.sensorTypeId).name;
     const sensorUnit = SensorMap.find(s => s.id === props.sensorTypeId).unit;
-
+    const [test2, setTest2] = useState("");
     useEffect(() => {
         setInterval(() => setDateState(new Date()), realtime_delay * 1000);
     }, []);
@@ -41,8 +43,9 @@ const SensorButton = ({onClick, ...props}) => {
     return (
         <Tooltip title={calculateSeconds(props.sensor.timestamp)} disableInteractive>
             <Button
-                style={{display: "block", textAlign: "middle"}}
+                style={{display: "block", textAlign: "middle", color: "black"}}
                 className={classes.raise}
+                variant="contained"
                 onClick={onClick}
             >
                 <Typography variant="h6">{sensorName}</Typography>

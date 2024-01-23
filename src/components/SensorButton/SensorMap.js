@@ -23,14 +23,14 @@ export const SensorMap = [
     {
         id: 4,
         name: 'Weight',
-        unit: 'kg',
+        unit: 'KG',
         graph_min: 0,
         graph_max: 50
     },
     {
         id: 5,
         name: 'Microphone',
-        unit: 'db',
+        unit: 'DB',
         graph_min: 0,
         graph_max: 120
     }

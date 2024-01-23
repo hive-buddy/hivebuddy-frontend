@@ -1,14 +1,6 @@
 import {spacing} from "@mui/system";
 
 export const navBarStyles = {
-    appBar: {
-        fontFamily: 'Book Antiqua',
-        backgroundColor: '#EEEEEE',
-        height: '80px',
-        '@media (max-width: 600px)': {
-            height: '60px',
-        },
-    },
     box: {
         flexGrow: 1,
     },
@@ -17,20 +9,12 @@ export const navBarStyles = {
         fontFamily: 'Book Antiqua',
         fontWeight: 'bold',
         fontSize: '2rem',
-        mt: '10px',
-        ml: '10px',
-        '@media (max-width: 600px)': {
-            fontSize: '20px',
-        },
+    },
 
-    },
-    tabCentering: {
-        ml: '120px',
-        mt: '10px',
-    },
     tabs: {
         color: 'black',
         fontSize: '1rem',
+        fontFamily: 'Book Antiqua',
     },
     logo: {
         display: 'flex',

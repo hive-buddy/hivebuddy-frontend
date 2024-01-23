@@ -1,89 +1,120 @@
-import React, {useState} from 'react';
-import Toolbar from '@mui/material/Toolbar';
+import * as React from 'react';
 import {mainNavBarItems} from "./consts/navBarItems";
 import {navBarStyles} from "./Styles";
 import {
     useNavigate
 } from "react-router-dom";
-import PropTypes from 'prop-types';
-import {Tabs, Tab, Typography} from '@mui/material';
+import {Fab, Fade, Typography} from '@mui/material';
 import {AppBar, Box} from "@mui/material";
 import Slide from '@mui/material/Slide';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
 import CssBaseline from '@mui/material/CssBaseline';
+import Button from "@mui/material/Button";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import PropTypes from 'prop-types';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Toolbar from "@mui/material/Toolbar";
+import {useState} from "react";
 
-function HideOnScroll(props) {
-    const {children, window} = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
-    const trigger = useScrollTrigger({
-        target: window ? window() : undefined,
-    });
 
-    return (
-        <Slide appear={false} direction="down" in={!trigger}>
-            {children}
-        </Slide>
-    );
-}
+    function HideOnScroll(props) {
+        const {children} = props;
+        const trigger1 = useScrollTrigger();
+        return (
+            <Slide appear={false} direction="down" in={!trigger1}>
+                <AppBar
+                    position="fixed"
+                    sx={{
+                        transition: 'transform 0.3s ease-in-out',
+                        transform: trigger1 ? 'translateY(-100%)' : 'translateY(0)',
+                        boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.1)',
+                    }}
+                >
+                    <Toolbar>{children}</Toolbar>
+                </AppBar>
+            </Slide>
+        );
+    }
+
+    function ScrollTop(props) {
+        const {children} = props;
+
+        const trigger = useScrollTrigger({
+            disableHysteresis: true,
+            threshold: 100,
+        });
+        const handleClick = (event) => {
+            const anchor = (event.target.ownerDocument || document).querySelector(
+                '#back-to-top-anchor',
+            );
+            if (anchor) {
+                anchor.scrollIntoView({
+                    block: 'center',
+                });
+            }
+        };
+        return (
+            <Fade in={trigger}>
+                <Box
+                    onClick={handleClick}
+                    role="presentation"
+                    sx={{position: 'fixed', bottom: 16, right: 16}}
+                >
+                    {children}
+                </Box>
+            </Fade>
+        );
+    }
 
 HideOnScroll.propTypes = {
     children: PropTypes.element.isRequired,
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
 };
-
+ScrollTop.propTypes = {
+    children: PropTypes.element.isRequired,
+};
 
 function Navbar(props) {
     const [value, setValue] = useState(0);
     const navigate = useNavigate();
     const handleRoute = (route) => {
-        navigate(route); // New line
+        navigate(route);
     };
-
     return (
         <React.Fragment>
             <CssBaseline/>
             <HideOnScroll {...props}>
                 <Box sx={navBarStyles.box}>
-                <AppBar position="fixed" sx={navBarStyles.appBar}>
-                    <Toolbar >
-                        <Box
-                            component="img"
-                            sx={{
-                                height: 50,
-                                width: 50,
-                                mt: '10px',
-                            }}
-                            alt="Honeycomb"
-                            src="https://cdn-icons-png.flaticon.com/512/5737/5737723.png "
-                        />
+                    <AppBar position="fixed" sx={{bgcolor: '#EEEEEE'}}>
+                        <Toolbar id="back-to-top-anchor">
+                            <Box
+                                component="img"
+                                sx={{
+                                    fontFamily: 'Book Antiqua',
+                                    height: '50px',
+                                }}
+                                alt="Honeycomb"
+                                src="https://cdn-icons-png.flaticon.com/512/5737/5737723.png "
+                            />
 
-                        <Typography sx={navBarStyles.logoText}>HiveBuddy</Typography>
+                            <Typography sx={navBarStyles.logoText}>HiveBuddy</Typography>
 
-                        <Tabs
-                            TabIndicatorProps={{sx: {backgroundColor: "#000000"}}}
-                            value={value}
-                            onChange={(e, val) => setValue(val)}
-                            sx={navBarStyles.tabCentering}
-                        >
-                            {mainNavBarItems.map((item, index) => (
-                                <Tab key={index} label={item.label} sx={navBarStyles.tabs} onClick={() => {
-                                    handleRoute(item.route)
-                                }}></Tab>
-                            ))}
-                            {/* <Tab key="4" label="Test" sx={navBarStyles.tabs} onClick={() => { handleRoute("test")}}></Tab> */}
-                            {/* <LinkTab label="Page One" href="/drafts" /> */}
-                        </Tabs>
-                    </Toolbar>
-                </AppBar>
+                            <Box sx={{ml: 'auto'}}>
+                                {mainNavBarItems.map((item, index) => (
+                                    <Button key={index} sx={navBarStyles.tabs}
+                                            onClick={() => handleRoute(item.route)}>
+                                        {item.label}
+                                    </Button>
+                                ))}
+                            </Box>
+                        </Toolbar>
+                    </AppBar>
                 </Box>
             </HideOnScroll>
             <Toolbar/>
+            <ScrollTop {...props}>
+                <Fab size="small" aria-label="scroll back to top">
+                    <KeyboardArrowUpIcon/>
+                </Fab>
+            </ScrollTop>
         </React.Fragment>
     )
 }

@@ -1,27 +1,12 @@
 export const mainNavBarItems = [
     {
         id: 0,
-        label: 'What is HiveBuddy?',
+        label: 'Home',
         route: '/',
     },
     {
         id: 1,
-        label: 'Our team',
-        route: '/',
+        label: 'Log In',
+        route: '/HiveId',
     },
-    {
-        id: 2,
-        label: 'Our Strengths',
-        route: '/',
-    },
-    {
-        id: 3,
-        label: 'How is it done?',
-        route: '/',
-    },
-    // {
-    //     id: 4,
-    //     label: 'My dashboard',
-    //     route: '/enter',
-    // }
 ]

@@ -17,9 +17,7 @@ const CustomLineChart = ({...props}) => {
     // const sensorUnit = SensorMap.find(s => s.id === props.sensorTypeId).unit;
     // const [latestData, setLatestData] = useState({data: []});
     // const [test2, setTest2] = useState("");
-    const [testData, setTestData] = useState({data: []});
-    const [test2, setTest2] = useState("");
-    const [average, setAverage] = useState([]);
+    
 
     // axis representing time
     // const xAxisData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -32,26 +30,7 @@ const CustomLineChart = ({...props}) => {
     // data.map((value, index) => ({ x: props.timestamp[index], y: value }))
     // yAxisData.push(SensorMap.find(s => s.id === props.sensorTypeId).graph_min);
     // yAxisData.push(SensorMap.find(s => s.id === props.sensorTypeId).graph_max);
-    function calculateAverage(array) {
-        var sum = 0;
-        for (var i = 0; i < array.length; i++) {
-            sum += array[i];
-        }
-        return sum / array.length;
-    }
-
-
-    function calculateAverageForCurrentSensor() {
-        const avg = calculateAverage(test2);
-        setAverage(avg);
-    }
-
-    useEffect(() => {
-        // Call the function to calculate and display the average when sensorData changes
-        const avg = calculateAverage(test2);
-        setAverage(avg);
-    }, [test2]);
-    console.log("Average" + average)
+    
     // console.log("val" + test2);
     // console.log("val" + testData);
 
@@ -110,7 +89,7 @@ const CustomLineChart = ({...props}) => {
 
     return (
         <Box>
-            <Typography variant="h6">{sensorName + " (" + sensorUnit + ")"}</Typography>
+            {/* <Typography variant="h6">{sensorName + " (" + sensorUnit + ")"}</Typography> */}
             {/* <Typography variant="h6">{test2 ? "(" + test2 + ")" : "nodata"}</Typography> */}
             {/* <Typography variant="h6">{latestData.data[0] ? "(" + latestData.data[0].value + ")" : "nodata"}</Typography> */}
             <LineChart
@@ -124,7 +103,7 @@ const CustomLineChart = ({...props}) => {
                 series={[
                     {
                         data: yAxisData,
-                        valueFormatter: (value) => (value == null ? 'NaN' : value),
+                        // valueFormatter: (value) => (value == null ? 'NaN' : value),
                         color: '#A29415'
                     },
                 ]}

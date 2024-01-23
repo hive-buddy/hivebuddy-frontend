@@ -108,7 +108,6 @@ function Overview() {
                 debug={false}
             />
             <SensorButtonGroup
-            <SensorButtonGroup
                 hiveId={hiveId}
                 sensorData={sensorData}
                 color="info"
@@ -138,8 +137,8 @@ function Overview() {
                                             hiveId={hiveId}
                                             sensorTypeId={currSensorTypeId}
                                             sensorData={sensorData}
-                    xAxisData={xAxisData}
-                    yAxisData={yAxisData}
+                                            xAxisData={xAxisData}
+                                            yAxisData={yAxisData}
                                         />
                                     </Paper>
                                 </Grid>

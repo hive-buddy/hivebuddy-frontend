@@ -13,8 +13,8 @@ const CustomLineChart = ({...props}) => {
     const yAxisData = props.yAxisData;
     // console.log(props.sensorTypeId);
     // console.log(SensorMap.find(s => s.id === props.sensorTypeId));
-    const sensorName = SensorMap.find(s => s.id === props.sensorTypeId).name;
-    const sensorUnit = SensorMap.find(s => s.id === props.sensorTypeId).unit;
+    // const sensorName = SensorMap.find(s => s.id === props.sensorTypeId).name;
+    // const sensorUnit = SensorMap.find(s => s.id === props.sensorTypeId).unit;
     // const [latestData, setLatestData] = useState({data: []});
     // const [test2, setTest2] = useState("");
     const [testData, setTestData] = useState({data: []});
@@ -70,18 +70,6 @@ const CustomLineChart = ({...props}) => {
     //     }
     //     test();
     // }, []);
-    useEffect(() => {
-        const fetchData = async () => {
-            const body = await getData();
-            console.log(body);
-            setTestData({ data: body });
-            if (body.length > 0) {
-                setTest2(body.map(dataPoint => dataPoint.value));
-            }
-        };
-
-        fetchData();
-    }, []);
 
 
 
@@ -136,9 +124,8 @@ const CustomLineChart = ({...props}) => {
                 series={[
                     {
                         data: yAxisData,
-                        valueFormatter: (value) => (value == null ? 'NaN' : value.toString()),
-                        color: '#A29415'
                         valueFormatter: (value) => (value == null ? 'NaN' : value),
+                        color: '#A29415'
                     },
                 ]}
                 width={800}

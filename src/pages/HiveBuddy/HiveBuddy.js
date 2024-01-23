@@ -1,19 +1,18 @@
-import {useEffect, useState} from 'react'
-import {Box, Container, Grow, Typography} from "@mui/material";
+import {useEffect, useState} from 'react';
+import {Box, Container, Grow} from "@mui/material";
 import {PageStyles} from "../consts/pageStyles";
-
-const SOCKET_URL = 'http://localhost:8080/ws-message';
-
 
 const HiveBuddy = () => {
     const [checked, setChecked] = useState(false);
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setChecked(true);
-        }, 2000);
+        }, 1000);
 
+        // Cleanup function to clear the timer when the component is unmounted
         return () => clearTimeout(timer);
-    }, []);
+    }, []); // The empty dependency array ensures that this effect runs only once on component mount
 
     return (
         <Box sx={PageStyles.boxHiveBuddy}>
@@ -25,7 +24,7 @@ const HiveBuddy = () => {
                 </Grow>
             </Box>
         </Box>
-    )
+    );
 }
 
-export default HiveBuddy
+export default HiveBuddy;

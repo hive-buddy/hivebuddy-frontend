@@ -1,6 +1,6 @@
 import './App.css';
 import './App.css';
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HiveBuddy from "./pages/HiveBuddy/HiveBuddy";
 import Overview from './pages/Overview';
@@ -23,20 +23,21 @@ function App() {
         <Routes>
             <Route path='/' element={
                 <>
-                    <Navbar />
-                    <HiveBuddy />
-                    <HiveBuddyDesc />
-                    <Team />
-                    <Break />
+                    <Navbar/>
+                    <HiveBuddy/>
+                    <HiveBuddyDesc/>
+                    <Team/>
+                    <Break/>
                     {/* <Strengths /> */}
-                     <Process />
-                    <Login />
-                    <Footer />
+                    <Process/>
+                    <Login/>
+                    <Footer/>
                 </>
-            } />
-            <Route path='/login/:hiveId/:pageId' element={<Overview />} />
-            <Route path='/HiveId' element={<HiveId />} />
-            <Route path='/sensor/*' element={<Sensors />} />
+            }/>
+            <Route path='/' element={<HiveBuddy/>}/>
+            <Route path='/login/:hiveId/:pageId' element={<Overview/>}/>
+            <Route path='/HiveId' element={<HiveId/>}/>
+            <Route path='/sensor/*' element={<Sensors/>}/>
         </Routes>
     );
 }

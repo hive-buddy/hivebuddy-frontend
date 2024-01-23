@@ -6,10 +6,29 @@ import { Box } from "@mui/material";
 import { PageStyles } from "./../consts/pageStyles";
 // import { makeStyles } from "@mui/styles";
 import { useParams } from "react-router-dom";
+import {Container, Box} from "@mui/material";
+import {useNavigate, useParams} from "react-router-dom";
 import SensorButtonGroup from '../../components/SensorButtonGroup/SensorButtonGroup';
 import CustomLineChart from '../../components/Graph/CustomLineChart';
+import CssBaseline from "@mui/material/CssBaseline";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import {SensorMap} from "../../components/SensorButton/SensorMap";
+
 
 const SOCKET_URL = 'http://localhost:8080/ws-message';
+
+async function getData() {
+    const response = await fetch('http://localhost:8080/api/v1/data/latest?hiveId=1&sensorTypeId=1', {
+        headers: {
+            Accept: "application/json"
+        }
+    });
+    const body = await response.json();
+    return body;
+}
 
 function Overview() {
     const { hiveId, pageId } = useParams();
@@ -22,12 +41,16 @@ function Overview() {
     const [xAxisData, setXAxisData] = useState([]);
     const [yAxisData, setYAxisData] = useState([]);
 
+    const sensorName = SensorMap.find(s => s.id === currSensorTypeId).name;
+    const sensorUnit = SensorMap.find(s => s.id === currSensorTypeId).unit;
+
+
     let isDashboard = false;
     let sx = {};
 
     if (pageId == 0) {
         isDashboard = true;
-        sx = PageStyles.boxDashboard;
+        //sx = PageStyles.boxDashboard;
     }
 
     const fetchInfo = () => {
@@ -66,11 +89,13 @@ function Overview() {
     }
 
     let onValuesReceived = (data) => {
+
         setSensorData((prevData) => ({
             ...prevData,
             [data.sensorTypeId]: data,
         }));
     }
+
 
     return (
         <Box sx={sx}>
@@ -83,6 +108,7 @@ function Overview() {
                 debug={false}
             />
             <SensorButtonGroup
+            <SensorButtonGroup
                 hiveId={hiveId}
                 sensorData={sensorData}
                 color="info"
@@ -92,16 +118,66 @@ function Overview() {
                 <div>
                 </div>
             ) : (
-                <CustomLineChart
-                    hiveId={hiveId}
-                    sensorTypeId={currSensorTypeId}
-                    sensorData={sensorData}
+                <>
+                    <Box sx={{display: 'flex'}}>
+                        <CssBaseline/>
+                        <Toolbar/>
+                        <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
+                            <Grid container spacing={3}>
+                                {/* Chart */}
+                                <Grid item xs={12} md={8} lg={9}>
+                                    <Paper
+                                        sx={{
+                                            p: 2,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            height: 540,
+                                        }}
+                                    >
+                                        <CustomLineChart
+                                            hiveId={hiveId}
+                                            sensorTypeId={currSensorTypeId}
+                                            sensorData={sensorData}
                     xAxisData={xAxisData}
                     yAxisData={yAxisData}
-                />
+                                        />
+                                    </Paper>
+                                </Grid>
+                                <Grid item xs={12} md={4} lg={3}>
+                                    <Paper
+                                        sx={{
+                                            p: 2,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            height: 540,
+                                        }}
+                                    >
+                                        <Typography
+                                            variant="h6"
+                                        >{sensorName + " (" + sensorUnit + ")"}</Typography>
+                                        {/*<Typography*/}
+                                        {/*    variant="h6"*/}
+                                        {/*> {'Average:' + average}</Typography>*/}
+                                        <video
+                                            src="https://cdn-icons-mp4.flaticon.com/512/12277/12277901.mp4"
+                                            width="448"
+                                            height="252"
+                                            style={{display: 'block', margin: '0 auto'}}
+                                            autoPlay
+                                            loop
+                                            muted
+                                            controls={false}
+                                        />
+                                    </Paper>
+                                </Grid>
+                            </Grid>
+                        </Container>
+                    </Box>
+                </>
             )}
         </Box>
     );
 }
 
+// src="https://cdn-icons-mp4.flaticon.com/512/12277/12277901.mp4"
 export default Overview;

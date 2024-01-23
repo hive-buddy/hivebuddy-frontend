@@ -9,7 +9,7 @@ import {
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
 
-const SOCKET_URL = 'ws://localhost:8080/ws-message';
+// const SOCKET_URL = 'ws://localhost:8080/ws-message';
 
 function Copyright(props) {
     return (
@@ -45,7 +45,6 @@ const HiveId = () => {
                 navigate("/login/" + hiveId + "/0");
                 console.log(response.status)
                 console.log(response);
-                console.log("Redirected:", response.redirected);
 
             } else {
                 alert("No HiveId " + hiveId);
@@ -54,17 +53,6 @@ const HiveId = () => {
             console.error("Error during login:", error);
         }
     }
-
-    const enter = () => {
-        navigate("/login/" + hiveId);
-    }
-
-    async function testHiveId() {
-        console.log(hiveId);
-        const response = await fetch(`/api/v1/data/login/${hiveId}` + hiveId);
-        console.log(response.data);
-    }
-
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>

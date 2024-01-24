@@ -2,15 +2,14 @@ import React from 'react'
 import itemData from './const/imageList'
 import {Container, Typography, Grid, Card, CardMedia, CardContent, ThemeProvider} from "@mui/material";
 import {PageStyles} from "../consts/pageStyles";
-import {theme} from '../consts/themes'
 
 
 const Team = () => {
 
     return (
         <Container sx={PageStyles.containerImage}>
-            <Typography  variant="h2" align="center" gutterBottom
-                       sx={{...PageStyles.typographyTitlesHighlight}}>
+            <Typography variant="h2" align="center" gutterBottom
+                        sx={{...PageStyles.typographyTitlesHighlight}}>
                 Our team
             </Typography>
             <Grid container spacing={2} justifyContent="center">

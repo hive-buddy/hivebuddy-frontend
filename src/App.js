@@ -13,6 +13,7 @@ import Process from "./pages/Process/Process";
 import Footer from "./components/Footer/Footer";
 import Break from "./pages/Break/Break";
 import Sensors from "./pages/Sensors/Sensors";
+import {Divider} from "@mui/material";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -27,8 +28,7 @@ function App() {
                     <HiveBuddy/>
                     <HiveBuddyDesc/>
                     <Team/>
-                    <Break/>
-                    {/* <Strengths /> */}
+                    <Divider/>
                     <Process/>
                     <Login/>
                     <Footer/>

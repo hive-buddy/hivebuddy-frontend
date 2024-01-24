@@ -50,7 +50,7 @@ export const PageStyles = {
 
     containerImage: {
         fontSize: '1.5rem',
-        height: '155vh',
+        height: '150vh',
         '@media (min-width: 1200px)': {
             maxWidth: 'initial',
         },
@@ -58,15 +58,12 @@ export const PageStyles = {
     // General
     typographyTitlesHighlight: {
         fontWeight: 'bold',
-        margin: '1em 0 1em 0',
+        // margin: '1em 0 1em 0',
         '@media (max-width: 600px)': {
             fontSize: '2rem', // Adjust font size for smaller screens
         },
         color: '#EBD671',
         textAlign: 'center',
-        '@media (min-width: 1200px)': {
-            maxWidth: 'initial',
-        },
         fontFamily: 'Book Antiqua',
     },
     titleBox: {
@@ -113,7 +110,7 @@ export const PageStyles = {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        height: "100vh",
     }
 }
 

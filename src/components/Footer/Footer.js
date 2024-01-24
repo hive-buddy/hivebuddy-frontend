@@ -4,7 +4,7 @@ import {Container, Typography} from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     footer: {
-        backgroundColor: "#6FB2D2",
+        backgroundColor: "#EBD671",
         padding: '5px'
     },
     text: {

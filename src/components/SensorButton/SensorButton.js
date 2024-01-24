@@ -43,7 +43,7 @@ const SensorButton = ({onClick, ...props}) => {
     return (
         <Tooltip title={calculateSeconds(props.sensor.timestamp)} disableInteractive>
             <Button
-                style={{display: "block", textAlign: "middle", color: "black"}}
+                style={{display: "block", textAlign: "middle", color: "white"}}
                 className={classes.raise}
                 variant="contained"
                 onClick={onClick}

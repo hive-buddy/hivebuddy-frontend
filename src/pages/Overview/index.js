@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import SockJsClient from 'react-stomp';
-// import ButtonGroup from '@mui/material/ButtonGroup';
-// import SensorButton from '../../components/SensorButton/SensorButton';
-import { PageStyles } from "./../consts/pageStyles";
-// import { makeStyles } from "@mui/styles";
 import Footer from '../../components/Footer/Footer'
-import { Container, Box } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import {Container, Box, Icon} from "@mui/material";
+import {useNavigate, useParams} from "react-router-dom";
 import SensorButtonGroup from '../../components/SensorButtonGroup/SensorButtonGroup';
 import CustomLineChart from '../../components/Graph/CustomLineChart';
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,12 +10,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import { SensorMap } from "../../components/SensorButton/SensorMap";
-
+import {SensorMap} from "../../components/SensorButton/SensorMap";
+import Button from "@mui/material/Button";
+import HouseRoundedIcon from '@mui/icons-material/HouseRounded';
 const SOCKET_URL = 'http://localhost:8080/ws-message';
 
 function Overview() {
-    const { hiveId, pageId } = useParams();
+    const {hiveId, pageId} = useParams();
 
     const [sensorData, setSensorData] = useState({});
     const [topics, setTopics] = useState([]);
@@ -32,7 +29,7 @@ function Overview() {
     const sensorName = SensorMap.find(s => s.id === currSensorTypeId).name;
     const sensorUnit = SensorMap.find(s => s.id === currSensorTypeId).unit;
 
-    const [testData, setTestData] = useState({ data: [] });
+    const [testData, setTestData] = useState({data: []});
     const [test2, setTest2] = useState("");
     const [average, setAverage] = useState([]);
 
@@ -52,8 +49,6 @@ function Overview() {
         })
             .then((res) => res.json())
             .then((d) => {
-                // setXAxisData([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-                // setYAxisData([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
                 setXAxisData([]);
                 setYAxisData([]);
                 let valueArr = [];
@@ -69,16 +64,16 @@ function Overview() {
                 setLoading(false);
             });
     }
-        useEffect(() => {
-            setLoading(true);
-            fetchInfo();
-        }, [hiveId, pageId])
+    useEffect(() => {
+        setLoading(true);
+        fetchInfo();
+    }, [hiveId, pageId])
 
 
     useEffect(() => {
         // const interval = setInterval(() => {
-            setLoading(true);
-            fetchInfo();
+        setLoading(true);
+        fetchInfo();
         // }, 1000);
         // return () => clearInterval(interval);
     }, [hiveId, pageId]);
@@ -131,10 +126,10 @@ function Overview() {
                 </div>
             ) : (
                 <>
-                    <Box sx={{ display: 'flex' }}>
-                        <CssBaseline />
-                        <Toolbar />
-                        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                    <Box sx={{display: 'flex'}}>
+                        <CssBaseline/>
+                        <Toolbar/>
+                        <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} md={4} lg={3}>
                                     <Paper
@@ -153,12 +148,16 @@ function Overview() {
                                             src="https://cdn-icons-mp4.flaticon.com/512/12277/12277901.mp4"
                                             width="448"
                                             height="252"
-                                            style={{ display: 'block', margin: '0 auto' }}
+                                            style={{display: 'block', margin: '0 auto'}}
                                             autoPlay
-                                            // loop
                                             muted
                                             controls={false}
                                         />
+                                        {/*<Button sx={{height:'50px', width:'100%'}}>*/}
+                                        {/*    <Icon>*/}
+                                        {/*        <HouseRoundedIcon/>*/}
+                                        {/*    </Icon>*/}
+                                        {/*</Button>*/}
                                     </Paper>
                                 </Grid>
                                 {/* Chart */}
@@ -182,11 +181,10 @@ function Overview() {
                                         />
                                     </Paper>
                                 </Grid>
-
                             </Grid>
                         </Container>
                     </Box>
-                    <Footer />
+                    <Footer/>
                 </>
             )}
         </Box>

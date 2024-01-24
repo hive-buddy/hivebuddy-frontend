@@ -12,24 +12,28 @@ import {autoPlay} from 'react-swipeable-views-utils';
 import {Container, Divider} from "@mui/material";
 import {PageStyles} from "../consts/pageStyles";
 import img from './img/1.jpg'
-//TODO: background honeycomb, our pictures
+import img2 from './img/2.jpg'
+import img3 from './img/3.jpg'
+import img4 from './img/4.jpg'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
     {
         label: 'Arduino Time',
-        imgPath:"",
+        imgPath: img,
     },
     {
         label: 'Sensors Connection',
-        imgPath:
-            'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+        imgPath: img2,
     },
     {
-        label: 'Funny',
-        imgPath:
-            'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+        label: 'Testing',
+        imgPath: img3,
+    },
+    {
+        label: 'Still Testing...',
+        imgPath: img4,
     },
 ];
 
@@ -52,8 +56,8 @@ function Process() {
 
     return (
         <Container sx={PageStyles.containerPage}>
-            {/*<Typography sx={PageStyles.typographyTitlesHighlight}>Our project path</Typography>*/}
-            <Box sx={{maxWidth: 400, flexGrow: 1,}}>
+            <Box sx={{maxWidth: 450, flexGrow: 1,}}>
+                <Typography variant='h2' sx={PageStyles.typographyTitlesHighlight}>Our project path</Typography>
                 <Paper
                     square
                     elevation={0}
@@ -62,7 +66,6 @@ function Process() {
                         alignItems: 'center',
                         height: 50,
                         pl: 2,
-                        bgcolor: 'background.default',
                     }}
                 >
                     <Typography>{images[activeStep].label}</Typography>
@@ -79,7 +82,7 @@ function Process() {
                                 <Box
                                     component="img"
                                     sx={{
-                                        height: 255,
+                                        height: 330,
                                         display: 'block',
                                         maxWidth: 400,
                                         overflow: 'hidden',
